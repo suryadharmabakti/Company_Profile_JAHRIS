@@ -1,11 +1,3 @@
 import './globals.css'
-
-export const metadata = {
-  title: 'JAHRIS | Sistem Manajemen SDM Berbasis Web',
-  description: 'JAHRIS membantu perusahaan mengelola SDM, absensi, payroll, keuangan, dan tugas dalam satu platform.',
-  openGraph: { title: 'JAHRIS HR Management System', description: 'Less Administration, More Productivity.' },
-}
-
-export default function RootLayout({ children }) {
-  return <html lang="id"><body>{children}</body></html>
-}
+export const metadata={title:'JAHRIS — HR yang bergerak secepat bisnis Anda',description:'Platform HR terpadu untuk data SDM, payroll, keuangan, dan produktivitas tim.',openGraph:{title:'JAHRIS — Sistem Manajemen SDM',description:'HR yang bergerak secepat bisnis Anda.'}}
+export default function RootLayout({children}){return <html lang="id"><body>{children}</body></html>}
