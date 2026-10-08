@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any */
 import Image from 'next/image'
 import { ArrowUpRight, ArrowRight, BarChart3, CalendarCheck2, Check, CheckCircle2, CircleDollarSign, Clock3, Fingerprint, LayoutDashboard, Mail, MapPin, Network, Phone, ShieldCheck, Smartphone, Users, Wallet, Puzzle, Boxes, Workflow, Database, Shield, Globe, Sparkles, Quote, User } from 'lucide-react'
 import { Navbar, Reveal, Counter } from './components/interactive'
+import { IntroLoader } from './components/intro-loader'
 import { MotionSystem } from './components/motion-system'
 import { ProductShowcase } from './components/product-showcase'
 import { Container, Eyebrow } from './components/ui'
@@ -9,7 +11,7 @@ import { Footer } from './components/home/footer'
 
 function Hero() {
   return (
-    <section id="home" className="noise-texture relative min-h-[100svh] overflow-hidden bg-[linear-gradient(145deg,#FFFFFF_0%,#F1F7FF_48%,#DCEBFF_100%)] text-[#0B1F4F]">
+    <section id="home" className="relative min-h-[100svh] overflow-hidden bg-[#F7FAFE] text-[#0B1F4F]">
       <div
         className="pointer-events-none absolute -left-32 top-1/4 -z-10 h-[600px] w-[700px] animate-blob-drift-slow rounded-full blur-[130px]"
         style={{ background: 'radial-gradient(circle, rgba(217,70,239,0.22) 0%, rgba(124,58,237,0.12) 40%, transparent 70%)' }}
@@ -29,11 +31,10 @@ function Hero() {
       <div className="hero-tech-grid pointer-events-none absolute inset-0 -z-10 opacity-80" />
       <div className="horizon-glow animate-horizon" />
 
-      <Container className="relative grid min-h-[100svh] items-center gap-12 pb-20 pt-32 sm:pt-36 lg:grid-cols-[.95fr_1.05fr]">
-        <Reveal>
-          <Eyebrow>JAHRIS / PLATFORM HR TERPADU</Eyebrow>
+      <Container className="relative flex min-h-[100svh] flex-col items-center justify-center gap-9 pb-16 pt-32 text-center sm:pt-36">
+        <Reveal className="w-full">
 
-          <h1 className="mt-6 max-w-2xl font-display text-[clamp(2.8rem,5vw,5rem)] font-semibold leading-[1.08] tracking-[-.045em]">
+          <h1 className="mx-auto mt-6 max-w-4xl font-display text-[clamp(3rem,6.2vw,5.8rem)] font-semibold leading-[1.04] tracking-[-.055em]">
             <span className="block overflow-hidden"><span data-hero-line className="block text-[#0B1F4F]">Kelola tim.</span></span>
             <span className="block overflow-hidden"><span data-hero-line className="block text-[#0B1F4F]">Bekerja lebih</span></span>
             <span className="block overflow-hidden">
@@ -43,36 +44,35 @@ function Hero() {
             </span>
           </h1>
 
-          <p data-hero-description className="mt-6 max-w-xl text-base leading-8 text-[#466384] sm:text-lg">
-            JAHRIS menyatukan data karyawan, absensi, cuti, payroll, kinerja, keuangan, dan tugas dalam satu sistem manajemen SDM berbasis web.
+          <p data-hero-description className="mx-auto mt-6 max-w-2xl text-base leading-8 text-[#55627D] sm:text-lg">
+            Satu ruang kerja yang membuat data, proses, dan keputusan HR bergerak lebih rapi.
           </p>
 
-          <div data-hero-actions className="mt-7 flex flex-wrap gap-4">
+          <div data-hero-actions className="mt-8 flex flex-wrap justify-center gap-3">
             <a
               href="https://app.jahris.id"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex h-12 items-center gap-2 rounded-full bg-gradient-to-br from-[#F8F5FF] via-[#E9DFFF] to-[#C4B5FD] px-7 text-sm font-extrabold text-[#1E0F45] shadow-[0_8px_30px_rgba(167,139,250,0.22),inset_0_1px_0_rgba(255,255,255,0.9)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_40px_rgba(255,255,255,0.28)]"
+              className="inline-flex h-12 items-center gap-2 rounded-full bg-[#12264F] px-7 text-sm font-bold text-white shadow-[0_10px_24px_rgba(18,38,79,.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1C3970]"
             >
               Coba JAHRIS <ArrowUpRight size={16}/>
             </a>
             <a
               href="#pricing"
-              className="inline-flex h-12 items-center gap-2 rounded-full border border-[rgba(167,139,250,0.35)] bg-gradient-to-br from-[#3B1A7E] to-[#5B21B6] px-7 text-sm font-bold text-white shadow-[0_4px_20px_rgba(124,58,237,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[rgba(196,181,253,0.55)] hover:shadow-[0_8px_30px_rgba(124,58,237,0.40)]"
+              className="inline-flex h-12 items-center gap-2 rounded-full border border-[#D6E0EC] bg-white/65 px-7 text-sm font-bold text-[#12264F] shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-white"
             >
               Lihat Harga <ArrowUpRight size={16}/>
             </a>
           </div>
 
-          <div data-hero-stack className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-[rgba(11,31,79,0.12)] pt-5 text-sm text-[#466384]">
+          <div data-hero-stack className="mx-auto mt-10 flex max-w-2xl flex-wrap items-center justify-center gap-x-7 gap-y-3 border-t border-[#DCE4EE] pt-5 text-sm text-[#55627D]">
             <span className="flex items-center gap-2 transition-colors hover:text-[#DDD6FE]"><CheckCircle2 size={17} className="text-[#A78BFA]"/> Implementasi ±14 hari</span>
             <span className="flex items-center gap-2 transition-colors hover:text-[#DDD6FE]"><Smartphone size={17} className="text-[#A78BFA]"/> Laptop & smartphone</span>
             <span className="flex items-center gap-2 transition-colors hover:text-[#DDD6FE]"><ShieldCheck size={17} className="text-[#A78BFA]"/> Berbasis web</span>
           </div>
         </Reveal>
 
-        <div data-hero-visual className="relative mx-auto w-full max-w-[980px] px-1 py-4 sm:px-3 lg:scale-[1.4]">
-          <div className="pointer-events-none absolute inset-[12%] -z-10 rounded-full bg-[radial-gradient(ellipse,rgba(37,99,169,0.18),rgba(96,165,250,0.12)_48%,transparent_72%)] blur-[58px]" />
+        <div data-hero-visual className="relative mx-auto w-full max-w-[960px]">
           <Image
             src="/hero-device-collage.png"
             alt="Rangkaian dashboard dan perangkat JAHRIS"
@@ -196,7 +196,7 @@ function ModulesSection() {
     { icon: Sparkles, title: 'UI Ramah Pengguna', desc: 'Karyawan cepat beradaptasi.' },
   ]
   return (
-    <section id="features" className="scroll-mt-24 relative overflow-hidden py-24 text-white sm:py-28 section-aurora-bg">
+    <section id="features" className="scroll-mt-24 relative overflow-hidden bg-white py-20 sm:py-28">
       <div className="divider-glow absolute inset-x-0 top-0" />
       <div
         className="pointer-events-none absolute -left-24 top-32 h-[520px] w-[520px] animate-blob-drift-slow rounded-full blur-[130px]"
@@ -209,14 +209,13 @@ function ModulesSection() {
       <Container className="relative z-10">
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
-            <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl border border-[rgba(244,114,182,0.45)] bg-gradient-to-br from-[#4C1D95] via-[#7C3AED] to-[#1E0F45] text-[#F5F3FF] shadow-[0_0_50px_rgba(217,70,239,0.32)] animate-aurora">
+            <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl border border-[#E1E6ED] bg-white/70 text-[#12264F] shadow-[0_10px_26px_rgba(18,38,79,.08)]">
               <Boxes size={24}/>
             </div>
-            <p className="mt-5 text-[11px] font-bold uppercase tracking-[.2em] text-gradient-aurora">Modul HR JAHRIS</p>
             <h2 className="mt-5 font-display text-[clamp(2rem,4vw,3.2rem)] font-semibold leading-[1.2] tracking-[-.04em]">
-              <span className="text-[#FAF7FF]">7 modul HR yang saling terhubung,</span>
+              <span>Semua kebutuhan HR,</span>
               <br className="hidden sm:block"/>
-              <span className="text-gradient-aurora"> kelola dari satu dashboard.</span>
+              <span> dalam satu dashboard.</span>
             </h2>
           </div>
         </Reveal>
@@ -224,13 +223,14 @@ function ModulesSection() {
         <Reveal>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {badges.map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="aurora-mini-card top-edge-highlight card-glow flex items-start gap-4 rounded-2xl p-5 transition-all">
-                <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-[rgba(244,114,182,0.35)] bg-gradient-to-br from-[#6D28D9] via-[#7C3AED] to-[#3B1A7E] text-[#F5F3FF] shadow-[0_0_24px_rgba(167,139,250,0.25)]">
+              <div key={title} className="aurora-mini-card card-glow relative flex items-start gap-4 overflow-hidden rounded-2xl p-5 transition-all">
+                <div className="absolute right-0 top-0 h-16 w-16 rounded-bl-full bg-[#F2F4F7]/80" />
+                <div className="relative grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-[#E1E6ED] bg-white/80 text-[#12264F] shadow-sm">
                   <Icon size={17}/>
                 </div>
-                <div>
-                  <h3 className="text-sm font-bold text-[#FAF7FF]">{title}</h3>
-                  <p className="mt-1 text-xs leading-5 text-[#C4B5FD]">{desc}</p>
+                <div className="relative">
+                  <h3 className="text-sm font-bold text-[#12264F]">{title}</h3>
+                  <p className="mt-1 text-xs leading-5 text-[#69758D]">{desc}</p>
                 </div>
               </div>
             ))}
@@ -238,19 +238,19 @@ function ModulesSection() {
         </Reveal>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-7">
-          <Reveal className="lg:col-span-3">
-            <article className="aurora-card-dark top-edge-highlight card-glow h-full rounded-3xl p-7 backdrop-blur-md">
-              <div className="grid h-12 w-12 place-items-center rounded-2xl border border-[rgba(244,114,182,0.40)] bg-gradient-to-br from-[#6D28D9] via-[#A78BFA] to-[#D946EF] text-[#15092e] shadow-[0_0_40px_rgba(217,70,239,0.30)]">
+          <Reveal className="lg:col-span-7">
+            <article className="glass-card card-glow h-full rounded-[28px] p-6 sm:p-8">
+              <div className="grid h-12 w-12 place-items-center rounded-2xl border border-[#E1E6ED] bg-white/80 text-[#12264F] shadow-sm">
                 <Users size={22}/>
               </div>
               <h3 className="mt-5 font-display text-xl font-bold text-[#FAF7FF]">Data Karyawan & Kehadiran</h3>
               <p className="mt-3 text-sm leading-7 text-[#C4B5FD]">Informasi personal, jabatan, status kerja, dan catatan kehadiran harian — tersimpan rapi dan mudah dicari.</p>
-              <div className="mt-6 space-y-3">
+              <div className="mt-7 grid gap-3 sm:grid-cols-2">
                 {modules.slice(0, 2).map(m => {
                   const ModIcon = m.icon
                   return (
-                    <div key={m.title} className="aurora-mini-card top-edge-highlight flex items-center gap-4 rounded-xl p-4">
-                      <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-gradient-to-br from-[#4C1D95] via-[#7C3AED] to-[#2D1B69] text-[#F5F3FF] shadow-[0_0_18px_rgba(167,139,250,0.22)]">
+                    <div key={m.title} className="rounded-2xl border border-[#E3E8F0] bg-white/70 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,.92)]">
+                      <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-[#E1E6ED] bg-white/80 text-[#12264F] shadow-sm">
                         <ModIcon size={18}/>
                       </div>
                       <div className="min-w-0">
@@ -263,7 +263,7 @@ function ModulesSection() {
               </div>
             </article>
           </Reveal>
-          <Reveal className="lg:col-span-4">
+          <Reveal className="hidden lg:col-span-4">
             <article className="aurora-card-dark top-edge-highlight card-glow h-full rounded-3xl p-7 backdrop-blur-md">
               <div className="grid h-12 w-12 place-items-center rounded-2xl border border-[rgba(96,165,250,0.45)] bg-gradient-to-br from-[#60A5FA] via-[#A78BFA] to-[#6D28D9] text-[#15092e] shadow-[0_0_40px_rgba(96,165,250,0.28)]">
                 <LayoutDashboard size={22}/>
@@ -288,7 +288,7 @@ function ModulesSection() {
               </div>
             </article>
           </Reveal>
-          <Reveal className="lg:col-span-7">
+          <Reveal className="hidden lg:col-span-7">
             <article className="aurora-card-dark top-edge-highlight card-glow h-full rounded-3xl p-7 backdrop-blur-md">
               <div className="grid h-12 w-12 place-items-center rounded-2xl border border-[rgba(244,114,182,0.45)] bg-gradient-to-br from-[#F472B6] via-[#A78BFA] to-[#6D28D9] text-[#15092e] shadow-[0_0_40px_rgba(244,114,182,0.30)] animate-aurora">
                 <Workflow size={22}/>
@@ -314,6 +314,101 @@ function ModulesSection() {
         </div>
       </Container>
       <div className="divider-glow absolute inset-x-0 bottom-0" />
+    </section>
+  )
+}
+
+function WorkflowModulesSection() {
+  const payrollModules = [modules[3], modules[4], modules[6]]
+  const requestModules = [modules[2], modules[5]]
+
+  return (
+    <section id="benefits" className="scroll-mt-24 bg-[#F7FAFE] py-20 sm:py-28">
+      <Container>
+        <Reveal>
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#DDE5F0] bg-white/70 px-4 py-2 text-xs font-semibold tracking-[.12em] text-[#315FBA] shadow-sm">
+            </span>
+            <h2 className="mt-5 font-display text-[clamp(2rem,4vw,3.1rem)] font-semibold leading-[1.15] tracking-[-.04em] text-[#12264F]">
+              Operasional HR, tanpa pekerjaan berulang.
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-[#55627D]">
+              Kelola penggajian, persetujuan, dan laporan dari alur yang saling terhubung.
+            </p>
+          </div>
+        </Reveal>
+
+        <div className="mt-12 grid gap-5 lg:grid-cols-12">
+          <Reveal className="lg:col-span-7">
+            <article className="glass-card h-full rounded-[28px] p-6 sm:p-8">
+              <div className="flex flex-col justify-between gap-8 sm:flex-row sm:items-start">
+                <div className="max-w-md">
+                  <div className="grid h-12 w-12 place-items-center rounded-2xl border border-[#DCE5F2] bg-white text-[#2367D1] shadow-sm">
+                    <CircleDollarSign size={22} />
+                  </div>
+                  <h3 className="mt-5 font-display text-2xl font-semibold tracking-[-.03em] text-[#12264F]">Payroll dan performa, selalu terkendali.</h3>
+                  <p className="mt-3 text-sm leading-7 text-[#55627D]">Data absensi mengalir ke payroll, sementara KPI dan laporan tetap siap saat dibutuhkan.</p>
+                </div>
+                <div className="rounded-2xl border border-[#DDE5F0] bg-white/70 px-4 py-3 text-right shadow-sm">
+                  <p className="text-xs font-medium text-[#69758D]">Status proses</p>
+                  <p className="mt-1 text-sm font-semibold text-[#16805C]">Terkoneksi otomatis</p>
+                </div>
+              </div>
+              <div className="mt-8 grid gap-3 sm:grid-cols-3">
+                {payrollModules.map((module) => {
+                  const Icon = module.icon
+                  return (
+                    <div key={module.title} className="rounded-2xl border border-[#E1E8F1] bg-white/75 p-4 shadow-sm">
+                      <div className="grid h-9 w-9 place-items-center rounded-xl bg-[#EDF4FF] text-[#2367D1]"><Icon size={17} /></div>
+                      <p className="mt-4 text-sm font-semibold text-[#12264F]">{module.title}</p>
+                      <p className="mt-1 text-xs leading-5 text-[#69758D]">{module.points.slice(0, 2).join(' · ')}</p>
+                    </div>
+                  )
+                })}
+              </div>
+            </article>
+          </Reveal>
+
+          <div className="grid gap-5 lg:col-span-5">
+            <Reveal>
+              <article className="glass-card rounded-[28px] p-6">
+                <div className="flex items-start gap-4">
+                  <div className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[#DCE5F2] bg-white text-[#6A4CC7] shadow-sm"><Workflow size={20} /></div>
+                  <div>
+                    <h3 className="font-display text-lg font-semibold text-[#12264F]">Persetujuan tanpa kertas.</h3>
+                    <p className="mt-2 text-sm leading-6 text-[#55627D]">Ajukan, tinjau, dan setujui dari satu alur yang jelas.</p>
+                  </div>
+                </div>
+                <div className="mt-6 space-y-3">
+                  {requestModules.map((module) => {
+                    const Icon = module.icon
+                    return (
+                      <div key={module.title} className="flex items-center gap-3 rounded-xl border border-[#E1E8F1] bg-white/75 p-3">
+                        <Icon size={17} className="text-[#6A4CC7]" />
+                        <div className="min-w-0">
+                          <p className="text-sm font-semibold text-[#12264F]">{module.title}</p>
+                          <p className="truncate text-xs text-[#69758D]">{module.points.slice(0, 2).join(' · ')}</p>
+                        </div>
+                        <CheckCircle2 size={17} className="ml-auto shrink-0 text-[#18A06E]" />
+                      </div>
+                    )
+                  })}
+                </div>
+              </article>
+            </Reveal>
+            <Reveal>
+              <article className="dark-surface rounded-[28px] border border-[#173B73] bg-[#12264F] p-6 text-white shadow-[0_18px_45px_rgba(18,38,79,.18)]">
+                <div className="flex items-center justify-between">
+                  <div className="grid h-10 w-10 place-items-center rounded-xl bg-white/10 text-[#C9DCFF]"><BarChart3 size={19} /></div>
+                  <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-[#D9E6FF]">Real-time</span>
+                </div>
+                <h3 className="mt-5 font-display text-lg font-semibold">Laporan yang mudah dibaca.</h3>
+                <p className="mt-2 text-sm leading-6 text-[#C9D6EB]">Ringkasan penting siap untuk keputusan berikutnya.</p>
+              </article>
+            </Reveal>
+          </div>
+        </div>
+      </Container>
     </section>
   )
 }
@@ -583,32 +678,27 @@ function ManagementSection() {
     },
   ]
   return (
-    <section id="dashboard" className="scroll-mt-24 relative overflow-hidden py-24 text-white sm:py-28 section-aurora-alt">
-      <div className="divider-glow absolute inset-x-0 top-0" />
-      <div className="pointer-events-none absolute left-1/4 top-10 h-[500px] w-[500px] animate-blob-drift-slow rounded-full blur-[130px]" style={{ background: 'radial-gradient(circle, rgba(244,114,182,0.22) 0%, transparent 60%)' }} />
-      <div className="pointer-events-none absolute right-1/4 bottom-10 h-[500px] w-[500px] animate-blob-drift rounded-full blur-[130px]" style={{ background: 'radial-gradient(circle, rgba(96,165,250,0.18) 0%, rgba(217,70,239,0.12) 40%, transparent 60%)' }} />
+    <section id="dashboard" className="scroll-mt-24 relative overflow-hidden bg-white py-20 text-[#12264F] sm:py-[120px]">
       <Container className="relative z-10">
         <Reveal>
-          <div className="mx-auto max-w-2xl text-center">
-            <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl border border-[rgba(96,165,250,0.45)] bg-gradient-to-br from-[#60A5FA] via-[#A78BFA] to-[#4C1D95] text-[#FAF7FF] shadow-[0_0_50px_rgba(96,165,250,0.30)] animate-aurora">
+          <div className="mx-auto max-w-[680px] text-center">
+            <div className="hidden mx-auto grid h-14 w-14 place-items-center rounded-2xl border border-[rgba(96,165,250,0.45)] bg-gradient-to-br from-[#60A5FA] via-[#A78BFA] to-[#4C1D95] text-[#FAF7FF] shadow-[0_0_50px_rgba(96,165,250,0.30)] animate-aurora">
               <LayoutDashboard size={24}/>
             </div>
-            <p className="mt-5 text-[11px] font-bold uppercase tracking-[.2em] text-gradient-aurora">Manajemen Visual JAHRIS</p>
-            <h2 className="mt-5 font-display text-[clamp(2rem,4vw,3.2rem)] font-semibold leading-[1.2] tracking-[-.04em]">
-              <span className="text-[#FAF7FF]">Kelola data HR, keuangan, dan tugas tim</span>
-              <br className="hidden sm:block"/>
-              <span className="text-gradient-aurora"> dalam satu antarmuka yang menyenangkan.</span>
+            <p className="hidden mt-5 text-[11px] font-bold uppercase tracking-[.2em] text-gradient-aurora">Manajemen Visual JAHRIS</p>
+            <h2 className="font-display text-[clamp(30px,4vw,40px)] font-semibold leading-[1.15] tracking-[-.02em] text-[#12264F]">
+              Satu antarmuka untuk HR, keuangan, dan tugas.
             </h2>
           </div>
         </Reveal>
 
         <Reveal>
-          <div className="mt-12">
+          <div className="mt-8">
             <ProductShowcase />
           </div>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-2">
+        <div className="hidden mt-14 grid gap-6 lg:grid-cols-2">
           {cards.map(({ icon: Icon, title, desc, bullets }, idx) => (
             <Reveal key={title}>
               <article className="aurora-card-dark top-edge-highlight card-glow h-full rounded-3xl p-7 backdrop-blur-md" style={idx % 2 ? undefined : undefined}>
@@ -630,14 +720,13 @@ function ManagementSection() {
           ))}
         </div>
       </Container>
-      <div className="divider-glow absolute inset-x-0 bottom-0" />
     </section>
   )
 }
 
 function BenefitsTimeline() {
   return (
-    <section id="benefits" className="scroll-mt-24 relative overflow-hidden py-24 text-white sm:py-28 section-aurora-bg">
+    <section className="scroll-mt-24 relative overflow-hidden py-24 text-white sm:py-28 section-aurora-bg">
       <div className="divider-glow absolute inset-x-0 top-0" />
       <Container className="relative z-10">
         <Reveal>
@@ -720,7 +809,6 @@ function Pricing() {
       <Container className="relative z-10">
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
-            <Eyebrow>Investasi yang mengikuti pertumbuhan</Eyebrow>
             <h2 className="mt-5 font-display text-[clamp(2rem,4vw,3.2rem)] font-bold tracking-[-.04em]">
               <span className="text-[#FAF7FF]">Pilih ruang untuk </span>
               <span className="text-gradient-aurora">bertumbuh.</span>
@@ -737,37 +825,36 @@ function Pricing() {
               <article
                 className={`relative flex h-full flex-col rounded-[28px] p-7 transition-all duration-300 hover:-translate-y-2 backdrop-blur-xl ${
                   plan.popular
-                    ? 'border-2 border-[rgba(244,114,182,0.55)] bg-gradient-to-b from-[rgba(76,29,149,0.60)] via-[rgba(124,58,237,0.48)] to-[rgba(30,15,69,0.55)] text-white shadow-[0_30px_80px_rgba(0,0,0,0.40),0_0_80px_rgba(217,70,239,0.28)] animate-aurora'
+                    ? 'pricing-featured dark-surface border border-[#1C3C70] bg-[#12264F] text-white shadow-[0_22px_48px_rgba(18,38,79,.24)]'
                     : 'aurora-card-dark top-edge-highlight card-glow text-white'
                 }`}
                 style={plan.popular ? { backgroundSize: '200% 200%' } : undefined}
               >
-                {plan.popular && <div className="pointer-events-none absolute inset-x-0 top-0 h-px rounded-t-[28px] bg-gradient-to-r from-transparent via-[rgba(244,114,182,0.85)] to-transparent" />}
                 {plan.popular && (
-                  <span className="absolute -top-3 left-7 rounded-full bg-gradient-to-r from-[#FDF4FF] via-[#F0ABFC] to-[#C4B5FD] px-4 py-1.5 text-[10px] font-black tracking-widest text-[#15092e] shadow-[0_6px_20px_rgba(217,70,239,0.38)]">
+                  <span className="pricing-badge absolute -top-3 left-7 rounded-full border border-[#DDE7F5] bg-white px-4 py-1.5 text-[10px] font-black tracking-widest text-[#12264F] shadow-[0_6px_18px_rgba(18,38,79,.16)]">
                     PALING POPULER
                   </span>
                 )}
 
                 <div className="flex items-center justify-between">
                   <h3 className="font-display text-2xl font-bold text-[#FAF7FF]">{plan.name}</h3>
-                  <ArrowUpRight size={18} className="text-[#F0ABFC]"/>
+                  <ArrowUpRight size={18} className={plan.popular ? 'text-white/70' : 'text-[#12264F]'}/>
                 </div>
 
                 <p className="mt-2 text-sm text-[#C4B5FD]">{plan.audience}</p>
 
-                <div className="mt-6 border-b border-[rgba(244,114,182,0.22)] pb-6">
-                  {plan.old && <span className="text-sm text-[#9D8CC4] line-through">{plan.old}</span>}
-                  <p className="mt-1 font-display text-4xl font-extrabold tracking-[-.06em] text-gradient-aurora animate-aurora">{plan.price}</p>
-                  <p className="mt-1 text-xs text-[#B8A8DE]">{plan.unit}</p>
+                <div className={`mt-6 border-b pb-6 ${plan.popular ? 'border-white/15' : 'border-[#DFE6EF]'}`}>
+                  {plan.old && <span className={`text-sm line-through ${plan.popular ? 'text-white/55' : 'text-[#69758D]'}`}>{plan.old}</span>}
+                  <p className="mt-1 font-display text-4xl font-extrabold tracking-[-.06em]">{plan.price}</p>
+                  <p className={`mt-1 text-xs ${plan.popular ? 'text-white/65' : 'text-[#69758D]'}`}>{plan.unit}</p>
                 </div>
 
-                <p className="mt-6 text-xs font-bold uppercase tracking-[.15em] text-[#F0ABFC]">Termasuk</p>
+                <p className={`mt-6 text-xs font-bold uppercase tracking-[.15em] ${plan.popular ? 'text-white/70' : 'text-[#55627D]'}`}>Termasuk</p>
 
                 <ul className="mt-5 flex-1 space-y-4">
                   {plan.features.map(feature => (
-                    <li key={feature} className="flex items-start gap-3 text-sm text-[#EDE9FE]">
-                      <Check size={18} className="shrink-0 text-[#F0ABFC]"/>
+                    <li key={feature} className={`flex items-start gap-3 text-sm ${plan.popular ? 'text-white/85' : 'text-[#55627D]'}`}>
+                      <Check size={18} className={`shrink-0 ${plan.popular ? 'text-white/70' : 'text-[#12264F]'}`}/>
                       {feature}
                     </li>
                   ))}
@@ -777,7 +864,7 @@ function Pricing() {
                   href={plan.href}
                   className={`mt-8 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full text-sm font-bold transition duration-300 hover:-translate-y-0.5 ${
                     plan.popular
-                      ? 'bg-gradient-to-br from-[#FDF4FF] via-[#F0ABFC] to-[#C4B5FD] text-[#15092e] shadow-[0_10px_34px_rgba(240,171,252,0.35),inset_0_1px_0_rgba(255,255,255,0.85)] hover:shadow-[0_16px_48px_rgba(244,114,182,0.45)]'
+                      ? 'border border-white/30 bg-white text-[#12264F] shadow-[inset_0_1px_0_rgba(255,255,255,.9)] hover:bg-white/90'
                       : 'bg-gradient-to-br from-[#4C1D95] via-[#7C3AED] to-[#6D28D9] border border-[rgba(217,70,239,0.38)] text-white shadow-[0_6px_20px_rgba(217,70,239,0.32)] hover:border-[rgba(244,114,182,0.58)] hover:shadow-[0_10px_34px_rgba(217,70,239,0.45)]'
                   }`}
                 >
@@ -839,7 +926,7 @@ function TestimonialsGrid() {
 
 function CTA() {
   return (
-    <section id="contact" className="noise-texture relative scroll-mt-24 overflow-hidden py-24 text-white sm:py-28 section-aurora-bg">
+    <section className="noise-texture relative scroll-mt-24 overflow-hidden py-24 text-white sm:py-28 section-aurora-bg">
       <div className="divider-glow absolute inset-x-0 top-0" />
       <div className="pointer-events-none absolute -bottom-20 -left-20 h-[600px] w-[600px] animate-blob-drift-slow rounded-full blur-[150px]" style={{ background: 'radial-gradient(circle, rgba(217,70,239,0.30) 0%, rgba(124,58,237,0.16) 40%, transparent 65%)' }} />
       <div className="pointer-events-none absolute -top-20 -right-20 h-[600px] w-[600px] animate-blob-drift rounded-full blur-[150px]" style={{ background: 'radial-gradient(circle, rgba(244,114,182,0.28) 0%, rgba(96,165,250,0.14) 45%, transparent 65%)' }} />
@@ -856,7 +943,7 @@ function CTA() {
           <div className="mt-8 flex flex-wrap gap-4">
             <a
               href="mailto:hrmanagementjaxer@gmail.com?subject=Konsultasi%20JAHRIS"
-              className="inline-flex h-12 items-center gap-2 rounded-full bg-gradient-to-br from-[#FDF4FF] via-[#F0ABFC] to-[#C4B5FD] px-7 text-sm font-extrabold text-[#15092e] shadow-[0_10px_34px_rgba(240,171,252,0.35),inset_0_1px_0_rgba(255,255,255,0.85)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_48px_rgba(244,114,182,0.48)]"
+              className="inline-flex h-12 items-center gap-2 rounded-full border border-[rgba(244,114,182,0.38)] bg-gradient-to-br from-[rgba(217,70,239,0.18)] to-[rgba(96,165,250,0.12)] px-7 text-sm font-bold text-white backdrop-blur-md transition hover:-translate-y-0.5 hover:border-[rgba(244,114,182,0.60)] hover:shadow-[0_10px_34px_rgba(217,70,239,0.28)]"
             >
               Jadwalkan konsultasi <ArrowUpRight size={16}/>
             </a>
@@ -943,10 +1030,9 @@ function LegacyFooter() {
         </div>
       </Container>
 
-      <Container className="flex flex-wrap justify-between gap-4 border-t border-[rgba(217,70,239,0.22)] py-5 text-xs text-[#B8A8DE]">
-        <span>© 2026 PT JAXER Group Indonesia. Hak cipta dilindungi.</span>
-        <a href="#home" className="hover:text-white transition-colors">Kembali ke atas ↑</a>
-      </Container>
+      <Container className="flex flex-wrap justify-center gap-4 border-t border-[rgba(217,70,239,0.22)] py-5 text-center text-xs text-[#B8A8DE]">
+  <span>© 2026 PT JAXER Group Indonesia. Hak cipta dilindungi.</span>
+</Container>
     </footer>
   )
 }
@@ -954,20 +1040,15 @@ function LegacyFooter() {
 export default function Page() {
   return (
     <>
+      <IntroLoader />
       <MotionSystem />
       <Navbar />
       <main>
         <Hero />
-        <TrustedBy />
-        <SyncSection />
         <ModulesSection />
-        <OperationsSection />
-        <NetworkSection />
+        <WorkflowModulesSection />
         <ManagementSection />
-        <BenefitsTimeline />
-        <Implementation />
         <Pricing />
-        <TestimonialsGrid />
         <CTA />
       </main>
       <Footer />

@@ -1,93 +1,39 @@
 'use client'
 
-import { useState } from 'react'
 import Image from 'next/image'
-import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react'
+import { type KeyboardEvent, useId, useState } from 'react'
 
-const slides = [
-  { title: 'Satu pusat kendali untuk seluruh tim.', label: '01 / MANAJEMEN TUGAS', image: '/proposal/p6-2.jpg', alt: 'Tampilan asli dashboard manajemen tugas JAHRIS', description: 'Pantau tugas lintas departemen, progres pekerjaan, dan pekerjaan yang melewati tenggat dalam satu tampilan.' },
-  { title: 'Alur kerja yang terlihat jelas.', label: '02 / BOARD KANBAN', image: '/proposal/p7-2.png', alt: 'Tampilan asli board Kanban JAHRIS', description: 'Pindahkan pekerjaan dari To Do, On Progress, Review, hingga Done dengan board yang mudah dipahami.' },
-  { title: 'Rencana tim, lebih mudah dipantau.', label: '03 / GANTT CHART', image: '/proposal/p8-2.png', alt: 'Tampilan asli Gantt Chart JAHRIS', description: 'Lihat jadwal dan durasi tugas dalam tampilan Gantt untuk koordinasi yang lebih terarah.' },
-]
+const tabs = ['Dashboard', 'Absensi', 'Payroll', 'Tugas'] as const
+type Tab = typeof tabs[number]
+
+const screens: Record<Tab, { src: string; alt: string; caption: string }> = {
+  Dashboard: { src: '/Dhashboard.png', alt: 'Dashboard JAHRIS', caption: 'Ringkasan karyawan, kehadiran, dan pengajuan terbaru dalam satu halaman.' },
+  Absensi: { src: '/Absensi.png', alt: 'Halaman absensi JAHRIS', caption: 'Rekap absensi harian otomatis, lengkap dengan status izin dan cuti.' },
+  Payroll: { src: '/Payroll.png', alt: 'Halaman payroll JAHRIS', caption: 'Gaji, komponen payroll, dan status pembayaran tersaji dengan rapi.' },
+  Tugas: { src: '/Task.png', alt: 'Halaman manajemen tugas JAHRIS', caption: 'Board tugas membantu tim memantau progres pekerjaan antar departemen.' },
+}
 
 export function ProductShowcase() {
-  const [index, setIndex] = useState(0)
-  const slide = slides[index]
-  const step = (direction: number) => setIndex(current => (current + direction + slides.length) % slides.length)
+  const [active, setActive] = useState<Tab>('Dashboard')
+  const id = useId()
+  const screen = screens[active]
+  const onKeyDown = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
+    const indexes = { ArrowRight: (index + 1) % tabs.length, ArrowLeft: (index + tabs.length - 1) % tabs.length, Home: 0, End: tabs.length - 1 }
+    const next = indexes[event.key as keyof typeof indexes]
+    if (next === undefined) return
+    event.preventDefault()
+    setActive(tabs[next])
+    document.getElementById(`${id}-tab-${next}`)?.focus()
+  }
 
-  return (
-    <div>
-      <div className="dark-surface relative overflow-hidden rounded-[28px] border border-[rgba(167,139,250,0.32)] bg-[rgba(20,10,45,0.72)] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.07),0_30px_80px_rgba(0,0,0,0.32),0_0_80px_rgba(124,58,237,0.14)] backdrop-blur-xl sm:p-5 lg:p-7">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[rgba(167,139,250,0.45)] to-transparent z-20" />
-
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[#0A0612] via-[rgba(20,10,45,0.6)] to-transparent z-10" />
-
-        <div key={slide.image} className="relative aspect-[16/11] overflow-hidden rounded-[20px] border border-white/10 bg-[#120826] sm:aspect-[16/9] lg:aspect-[2.1/1]">
-          <Image
-            src={slide.image}
-            alt={slide.alt}
-            fill
-            sizes="(max-width: 768px) 100vw, 1200px"
-            className="object-cover object-top transition-transform duration-700 hover:scale-[1.01]"
-            priority={index === 0}
-          />
-        </div>
-
-        <div className="absolute bottom-8 left-8 right-8 z-20 max-w-2xl text-white sm:bottom-10 sm:left-10">
-          <span className="inline-block rounded-full border border-[rgba(167,139,250,0.20)] bg-[rgba(255,255,255,0.055)] px-3 py-1 text-[10px] font-bold uppercase tracking-[.18em] text-[#C4B5FD] backdrop-blur-sm sm:text-xs">
-            {slide.label}
-          </span>
-          <h3 className="mt-3 max-w-xl font-display text-2xl font-bold leading-tight tracking-tight text-[#F5F3FF] sm:text-3xl">
-            {slide.title}
-          </h3>
-          <p className="mt-2.5 hidden max-w-lg text-sm leading-6 text-[#B8A8DE] sm:block">
-            {slide.description}
-          </p>
-        </div>
-      </div>
-
-      <div className="mt-7 flex items-center justify-between gap-4">
-        <div className="flex gap-2">
-          {slides.map((item, i) => (
-            <button
-              key={item.label}
-              onClick={() => setIndex(i)}
-              aria-label={`Tampilkan ${item.label}`}
-              aria-current={index === i}
-              className={`h-2.5 rounded-full transition-all duration-300 ${
-                index === i
-                  ? 'w-12 bg-gradient-to-r from-white via-violet-200 to-[#C4B5FD] shadow-[0_0_12px_rgba(255,255,255,0.8)]'
-                  : 'w-2.5 bg-violet-900/60 hover:bg-white/40'
-              }`}
-            />
-          ))}
-        </div>
-
-        <div className="flex items-center gap-3">
-          <a
-            href="https://app.jahris.id"
-            target="_blank"
-            rel="noreferrer"
-            className="mr-3 hidden items-center gap-1.5 text-sm font-bold text-violet-200 transition hover:text-white hover:gap-2 sm:inline-flex"
-          >
-            Lihat aplikasi <ArrowUpRight size={16}/>
-          </a>
-          <button
-            onClick={() => step(-1)}
-            aria-label="Slide sebelumnya"
-            className="grid h-11 w-11 place-items-center rounded-full border border-white/20 bg-white/5 text-white backdrop-blur-md transition hover:bg-white/15 hover:border-white/40 hover:-translate-x-0.5"
-          >
-            <ArrowLeft size={18}/>
-          </button>
-          <button
-            onClick={() => step(1)}
-            aria-label="Slide berikutnya"
-            className="grid h-11 w-11 place-items-center rounded-full border border-white/20 bg-white/5 text-white backdrop-blur-md transition hover:bg-white/15 hover:border-white/40 hover:translate-x-0.5"
-          >
-            <ArrowRight size={18}/>
-          </button>
-        </div>
-      </div>
+  return <div>
+    <div role="tablist" aria-label="Tampilan produk JAHRIS" className="flex max-w-full gap-1 overflow-x-auto rounded-full border border-[var(--surface-border)] bg-white/72 p-1.5 shadow-[var(--surface-shadow)] backdrop-blur-xl">
+      {tabs.map((tab, index) => <button key={tab} id={`${id}-tab-${index}`} role="tab" aria-selected={active === tab} aria-controls={`${id}-panel-${index}`} tabIndex={active === tab ? 0 : -1} onClick={() => setActive(tab)} onKeyDown={(event) => onKeyDown(event, index)} className={`h-10 shrink-0 rounded-full px-5 text-sm font-medium transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#1E4FD8] ${active === tab ? 'bg-[#12264F] text-white' : 'text-[#55627D] hover:text-[#12264F]'}`}>{tab}</button>)}
     </div>
-  )
+    <div id={`${id}-panel-${tabs.indexOf(active)}`} role="tabpanel" aria-labelledby={`${id}-tab-${tabs.indexOf(active)}`} className="mt-6 overflow-hidden rounded-[24px] border border-[var(--surface-border)] bg-white/72 shadow-[var(--surface-shadow)] backdrop-blur-xl">
+      <div className="flex items-center gap-2 border-b border-[#E8ECF3] px-[18px] py-[14px]"><i className="h-2.5 w-2.5 rounded-full bg-[#D5DBE6]"/><i className="h-2.5 w-2.5 rounded-full bg-[#D5DBE6]"/><i className="h-2.5 w-2.5 rounded-full bg-[#D5DBE6]"/><span className="ml-2 rounded-full border border-[var(--surface-border)] px-3 py-1 text-xs text-[#55627D]">app.jahris.id</span></div>
+      <div className="bg-[#F7FAFE] p-3 sm:p-6"><div className="relative aspect-[16/9] overflow-hidden rounded-[14px] border border-[var(--surface-border)] bg-white"><Image key={screen.src} src={screen.src} alt={screen.alt} fill priority={active === 'Dashboard'} sizes="(max-width: 1024px) 92vw, 1180px" className="object-contain"/></div></div>
+    </div>
+    <p className="mt-5 text-sm text-[#55627D]">{screen.caption}</p>
+  </div>
 }

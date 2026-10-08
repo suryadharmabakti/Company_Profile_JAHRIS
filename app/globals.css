@@ -7,6 +7,14 @@
    Bright aurora purple palette with gradient candy
    ============================================= */
 :root {
+  --surface: #FFFFFF;
+  --surface-border: #E3E8F0;
+  --surface-shadow: 0 8px 28px rgba(18,38,79,0.06);
+  --showcase-ink: #12264F;
+  --showcase-muted: #55627D;
+  --showcase-accent: #1E4FD8;
+  --showcase-badge-border: #CFDAF5;
+  --showcase-line: #E8ECF3;
   --brand-violet-deepest: #15092e;
   --brand-violet-dark:    #1e0f45;
   --brand-violet:         #2d1b69;
@@ -315,6 +323,66 @@
   -webkit-text-fill-color: #F5F8FF;
 }
 
+
+/* Minimal light direction: clean solid surfaces, with glass retained only
+   where it adds hierarchy and depth. */
+body {
+  background: #F7FAFE !important;
+  background-image: none !important;
+}
+
+.section-aurora-bg { background: #FFFFFF !important; }
+.section-aurora-alt { background: #F7FAFE !important; }
+
+.glass-card,
+.feature-card-purple,
+.aurora-card-dark,
+.aurora-mini-card {
+  background: rgba(255,255,255,0.54) !important;
+}
+
+/* Editorial glass theme: remove decorative gradients from controls and small
+   surfaces, keeping a single restrained navy accent. */
+[class*="bg-gradient-to-br"],
+[class*="bg-gradient-to-r"] {
+  background-image: none !important;
+  background-color: rgba(255,255,255,0.62) !important;
+  border-color: rgba(11,31,79,0.14) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.88), 0 10px 24px rgba(11,31,79,0.10) !important;
+}
+
+[class*="bg-gradient-to-br"]:is(a, button),
+[class*="bg-gradient-to-r"]:is(a, button) {
+  color: #0B1F4F !important;
+}
+
+.text-gradient-white-violet,
+.text-gradient-lavender,
+.text-gradient-violet-white,
+.text-gradient-aurora,
+.text-gradient-navy-blue {
+  background: none !important;
+  color: #0B1F4F !important;
+  -webkit-text-fill-color: #0B1F4F !important;
+}
+
+.divider-glow,
+.horizon-glow {
+  background: #D7E1EE !important;
+  filter: none;
+}
+
+.divider-glow::after,
+.horizon-glow::after {
+  display: none;
+}
+
+.animate-blob-drift,
+.animate-blob-drift-slow,
+.animate-glow-pulse {
+  opacity: 0.25;
+}
+
 @layer base {
   html { scroll-behavior: smooth; }
   html.lenis, html.lenis body { height: auto; }
@@ -335,4 +403,127 @@
     html { scroll-behavior: auto; }
     *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
   }
+}
+
+/* Final shared visual system: calm, consistent glass across every section. */
+:root {
+  --page-ink: #12264F;
+  --page-muted: #55627D;
+  --page-line: #E3E8F0;
+  --page-glass: rgba(255,255,255,0.72);
+  --page-shadow: 0 8px 28px rgba(18,38,79,0.06), inset 0 1px 0 rgba(255,255,255,0.9);
+}
+
+body { background: #F7FAFE !important; background-image: none !important; }
+main > section { background: #FFFFFF !important; }
+main > section:nth-child(even) { background: #F7FAFE !important; }
+
+.glass-card,
+.feature-card-purple,
+.aurora-card-dark,
+.aurora-mini-card {
+  background: var(--page-glass) !important;
+  border: 1px solid var(--page-line) !important;
+  box-shadow: var(--page-shadow) !important;
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+}
+
+.top-edge-highlight::before,
+.divider-glow,
+.horizon-glow,
+.hero-tech-grid,
+.animate-blob-drift,
+.animate-blob-drift-slow,
+.animate-glow-pulse { display: none !important; }
+
+.card-glow { transition: border-color 150ms ease, box-shadow 150ms ease !important; }
+.card-glow:hover { transform: none !important; border-color: #C8D5E8 !important; box-shadow: 0 12px 30px rgba(18,38,79,0.10), inset 0 1px 0 rgba(255,255,255,0.9) !important; }
+
+main :is(h1, h2, h3) { color: var(--page-ink) !important; }
+main :is(p, li) { color: var(--page-muted) !important; }
+main section { border-color: var(--page-line); }
+
+.dark-surface :is(h1, h2, h3, p, li, span) { color: #F5F8FF !important; -webkit-text-fill-color: #F5F8FF !important; }
+
+/* Footer stays legible on its dark surface; pricing uses navy type on glass. */
+#pricing :is(h1, h2, h3, h4, p, span, li) {
+  color: #12264F !important;
+  -webkit-text-fill-color: #12264F !important;
+}
+
+#pricing .pricing-featured :is(h1, h2, h3, h4, p, span, li) {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
+#pricing .pricing-badge {
+  color: #12264F !important;
+  -webkit-text-fill-color: #12264F !important;
+}
+
+/* Shared finishing pass: quiet depth and consistent spacing across glass UI. */
+main > section {
+  isolation: isolate;
+}
+
+main .glass-card,
+main .aurora-card-dark,
+main .aurora-mini-card {
+  border-radius: 24px;
+}
+
+main a,
+main button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+main :is(a, button):focus-visible {
+  outline-color: #12264F;
+}
+
+/* Apple-inspired editorial rhythm: quiet surfaces, generous space, and
+   system typography while preserving the JAHRIS glass material. */
+html { background: #F5F5F7; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main :is(h1, h2, h3) {
+  letter-spacing: -0.035em;
+}
+
+main > section {
+  border-top: 1px solid rgba(18, 38, 79, 0.045);
+}
+
+@media (min-width: 640px) {
+  main > section {
+    scroll-margin-top: 88px;
+  }
+}
+
+#contact,
+#contact :is(h1, h2, h3, h4, p, span, a) {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, Arial, sans-serif;
+}
+
+@keyframes jahris-intro-logo {
+  0% { opacity: 0; transform: translateY(12px) scale(.88); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes jahris-intro-text {
+  0% { opacity: 0; transform: translateY(14px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.intro-logo { animation: jahris-intro-logo 720ms cubic-bezier(.22, 1, .36, 1) both; }
+.intro-hello { animation: jahris-intro-text 720ms 130ms cubic-bezier(.22, 1, .36, 1) both; }
+.intro-subtitle { animation: jahris-intro-text 650ms 230ms cubic-bezier(.22, 1, .36, 1) both; }
+
+@supports not (backdrop-filter: blur(1px)) {
+  .glass-card, .feature-card-purple, .aurora-card-dark, .aurora-mini-card { background: rgba(255,255,255,0.94) !important; }
 }

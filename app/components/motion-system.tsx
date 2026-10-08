@@ -27,11 +27,35 @@ export function MotionSystem() {
       ease: 'outExpo',
     })
 
+    const heroVisual = document.querySelector<HTMLElement>('[data-hero-visual]')
+    if (heroVisual) {
+      play(heroVisual, {
+        y: [0, -7],
+        duration: 3200,
+        delay: 900,
+        ease: 'inOutSine',
+        loop: true,
+        alternate: true,
+      })
+    }
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return
         const element = entry.target as HTMLElement
-        play(element, { opacity: [0, 1], y: [36, 0], duration: 720, ease: 'outExpo' })
+        play(element, { opacity: [0, 1], y: [32, 0], duration: 700, ease: 'outExpo' })
+
+        const items = Array.from(element.querySelectorAll<HTMLElement>('article, [role="tab"], [role="tabpanel"]')).slice(0, 8)
+        if (items.length > 1) {
+          play(items, {
+            opacity: [0, 1],
+            y: [18, 0],
+            scale: [0.985, 1],
+            delay: stagger(75),
+            duration: 560,
+            ease: 'outExpo',
+          })
+        }
         observer.unobserve(element)
       })
     }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' })

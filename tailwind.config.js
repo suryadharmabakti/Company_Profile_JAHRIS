@@ -4,7 +4,7 @@ module.exports = {
     extend: {
       fontFamily: {
         display: ['var(--font-dm-sans)', 'sans-serif'],
-        sans: ['var(--font-dm-sans)', 'sans-serif'],
+        sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Text"', 'Inter', 'Arial', 'sans-serif'],
       },
       colors: {
         ink: '#15092e',
