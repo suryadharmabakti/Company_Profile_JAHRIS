@@ -1,87 +1,63 @@
 'use client'
 
 import { useEffect } from 'react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { animate, stagger } from 'animejs'
 import Lenis from 'lenis'
 
-gsap.registerPlugin(ScrollTrigger)
-
-/** One scoped animation controller. Content stays visible if JavaScript is unavailable. */
+/** Anime.js controller. Content stays visible without JavaScript or with reduced motion. */
 export function MotionSystem() {
   useEffect(() => {
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (reduced) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
-    let lenis: Lenis | undefined
-    let ticker: ((time: number) => void) | undefined
-    if (window.matchMedia('(min-width: 1024px) and (pointer: fine)').matches) {
-      lenis = new Lenis({ duration: 1.05, smoothWheel: true })
-      lenis.on('scroll', ScrollTrigger.update)
-      ticker = (time: number) => lenis?.raf(time * 1000)
-      gsap.ticker.add(ticker)
-      gsap.ticker.lagSmoothing(0)
+    const animations: ReturnType<typeof animate>[] = []
+    const play = (...args: Parameters<typeof animate>) => {
+      const animation = animate(...args)
+      animations.push(animation)
+      return animation
     }
 
-    const ctx = gsap.context(() => {
-      const hero = gsap.timeline({ defaults: { ease: 'power3.out', duration: .72 } })
-      hero.from('[data-hero-badge]', { opacity: 0, y: 18 })
-        .from('[data-hero-line]', { opacity: 0, yPercent: 85, stagger: .11 }, '-=.5')
-        .from('[data-hero-description]', { opacity: 0, y: 26 }, '-=.5')
-        .from('[data-hero-actions]', { opacity: 0, y: 20 }, '-=.55')
-        .from('[data-hero-visual]', { opacity: 0, y: 34, scale: .97, duration: .9 }, '-=.7')
-        .from('[data-hero-stack]', { opacity: 0, y: 16 }, '-=.65')
-
-      gsap.utils.toArray<HTMLElement>('[data-motion-reveal]').forEach((item) => {
-        if (item.closest('#home')) return
-        gsap.from(item, {
-          opacity: 0, y: 40, duration: .8, ease: 'power3.out', clearProps: 'all',
-          scrollTrigger: { trigger: item, start: 'top 85%', once: true },
-        })
-      })
-
-      gsap.utils.toArray<HTMLElement>('[data-motion-heading]').forEach((heading) => {
-        gsap.from(heading, {
-          yPercent: 95, opacity: 0, duration: .9, ease: 'power3.out', clearProps: 'all',
-          scrollTrigger: { trigger: heading, start: 'top 88%', once: true },
-        })
-      })
-
-      gsap.utils.toArray<HTMLElement>('[data-motion-progress]').forEach((bar) => {
-        gsap.from(bar, {
-          scaleX: 0, transformOrigin: 'left center', duration: 1.15, ease: 'power3.out', clearProps: 'transform',
-          scrollTrigger: { trigger: bar, start: 'top 90%', once: true },
-        })
-      })
-
-      if (window.matchMedia('(min-width: 1024px)').matches) {
-        gsap.to('[data-hero-visual]', {
-          y: 34, ease: 'none',
-          scrollTrigger: { trigger: '#home', start: 'top top', end: 'bottom top', scrub: .7 },
-        })
-      }
-
-      gsap.utils.toArray<HTMLElement>('[data-motion-parallax]').forEach((visual) => {
-        gsap.fromTo(visual, { y: 26 }, {
-          y: -26, ease: 'none',
-          scrollTrigger: { trigger: visual, start: 'top bottom', end: 'bottom top', scrub: .8 },
-        })
-      })
-
-      gsap.utils.toArray<HTMLElement>('footer .grid > div').forEach((item, index) => {
-        gsap.from(item, {
-          opacity: 0, y: 22, duration: .7, delay: index * .08, ease: 'power3.out', clearProps: 'all',
-          scrollTrigger: { trigger: item, start: 'top 92%', once: true },
-        })
-      })
+    const heroElements = document.querySelectorAll<HTMLElement>(
+      '[data-hero-badge], [data-hero-line], [data-hero-description], [data-hero-actions], [data-hero-stack], [data-hero-visual]',
+    )
+    play(heroElements, {
+      opacity: [0, 1],
+      y: [28, 0],
+      delay: stagger(95),
+      duration: 760,
+      ease: 'outExpo',
     })
 
-    ScrollTrigger.refresh()
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return
+        const element = entry.target as HTMLElement
+        play(element, { opacity: [0, 1], y: [36, 0], duration: 720, ease: 'outExpo' })
+        observer.unobserve(element)
+      })
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' })
+
+    document.querySelectorAll<HTMLElement>('[data-motion-reveal]').forEach((element) => {
+      if (!element.closest('#home')) observer.observe(element)
+    })
+
+    let lenis: Lenis | undefined
+    let frameId: number | undefined
+    if (window.matchMedia('(min-width: 1024px) and (pointer: fine)').matches) {
+      lenis = new Lenis({ duration: 1.05, smoothWheel: true })
+      const frame = (time: number) => {
+        lenis?.raf(time)
+        frameId = requestAnimationFrame(frame)
+      }
+      frameId = requestAnimationFrame(frame)
+    }
+
     return () => {
-      ctx.revert()
-      if (ticker) gsap.ticker.remove(ticker)
+      observer.disconnect()
+      animations.forEach((animation) => animation.revert())
+      if (frameId) cancelAnimationFrame(frameId)
       lenis?.destroy()
     }
   }, [])
+
   return null
 }

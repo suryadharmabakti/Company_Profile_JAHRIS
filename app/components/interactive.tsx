@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
 import type { ReactNode } from 'react'
 
@@ -21,17 +22,12 @@ export function Navbar() {
       <div className="mx-auto flex max-w-[1360px] items-center justify-between gap-4">
         <a
           href="#home"
-          className="flex h-14 items-center gap-2.5 rounded-full border border-[rgba(167,139,250,0.18)] bg-[rgba(14,7,32,0.6)] px-5 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-[16px] transition-all hover:border-[rgba(167,139,250,0.38)] sm:px-7"
+          className="flex h-14 items-center rounded-full border border-white/55 bg-[rgba(255,255,255,0.38)] px-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.72),0_12px_30px_rgba(11,31,79,0.12)] backdrop-blur-[20px] transition-all hover:border-white/80 hover:bg-[rgba(255,255,255,0.52)] sm:px-7"
         >
-          <span className="grid h-8 w-8 place-items-center rounded-xl bg-gradient-to-br from-white via-violet-100 to-[#3B1A7E] font-display text-sm font-extrabold text-[#1E0F45] shadow-md">
-            J
-          </span>
-          <span className="font-display text-lg font-extrabold tracking-[-.05em] text-[#F7F5FF]">
-            JAHRIS<span className="text-[#A78BFA]">.</span>
-          </span>
+          <Image src="/jahris-logo.png" alt="JAHRIS" width={190} height={39} priority className="h-auto w-[122px] sm:w-[140px]" />
         </a>
 
-        <div className={`flex h-14 items-center gap-2 rounded-full border border-[rgba(167,139,250,0.18)] bg-[rgba(14,7,32,0.6)] p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-[16px] transition-all duration-300 ${scrolled ? 'shadow-[0_12px_40px_rgba(2,8,23,0.6)]' : ''}`}>
+        <div className={`flex h-14 items-center gap-2 rounded-full border border-white/55 bg-[rgba(255,255,255,0.38)] p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.72),0_12px_30px_rgba(11,31,79,0.12)] backdrop-blur-[20px] transition-all duration-300 ${scrolled ? 'bg-[rgba(255,255,255,0.52)] shadow-[0_12px_40px_rgba(11,31,79,0.18)]' : ''}`}>
           <nav className="hidden items-center gap-1 lg:flex" aria-label="Navigasi utama">
             {links.map(([name, href], i) => (
               <a
@@ -40,7 +36,7 @@ export function Navbar() {
                 className={`rounded-full px-4 py-2.5 text-xs font-bold transition-all duration-300 ${
                   i === 0
                     ? 'bg-gradient-to-br from-[#F5F0FF] to-[#DDD0FF] text-[#1E0F45] shadow-sm'
-                    : 'text-[rgba(230,220,255,0.75)] hover:bg-white/10 hover:text-white'
+                    : 'text-[#314E7A] hover:bg-white/50 hover:text-[#0B1F4F]'
                 }`}
               >
                 {name}
@@ -61,7 +57,7 @@ export function Navbar() {
             onClick={() => setOpen(!open)}
             aria-label={open ? 'Tutup menu' : 'Buka menu'}
             aria-expanded={open}
-            className="grid h-11 w-11 place-items-center rounded-full text-white hover:bg-white/10 lg:hidden"
+            className="grid h-11 w-11 place-items-center rounded-full text-[#0B1F4F] hover:bg-white/50 lg:hidden"
           >
             {open ? <X size={20} /> : <Menu size={20} />}
           </button>

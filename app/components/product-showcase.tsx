@@ -17,7 +17,7 @@ export function ProductShowcase() {
 
   return (
     <div>
-      <div className="relative overflow-hidden rounded-[28px] border border-[rgba(167,139,250,0.32)] bg-[rgba(20,10,45,0.72)] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.07),0_30px_80px_rgba(0,0,0,0.32),0_0_80px_rgba(124,58,237,0.14)] backdrop-blur-xl sm:p-5 lg:p-7">
+      <div className="dark-surface relative overflow-hidden rounded-[28px] border border-[rgba(167,139,250,0.32)] bg-[rgba(20,10,45,0.72)] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.07),0_30px_80px_rgba(0,0,0,0.32),0_0_80px_rgba(124,58,237,0.14)] backdrop-blur-xl sm:p-5 lg:p-7">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[rgba(167,139,250,0.45)] to-transparent z-20" />
 
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[#0A0612] via-[rgba(20,10,45,0.6)] to-transparent z-10" />

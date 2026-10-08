@@ -92,7 +92,15 @@
 }
 
 .text-gradient-aurora {
-  background: linear-gradient(135deg, #60A5FA 0%, #A78BFA 30%, #D946EF 55%, #F472B6 75%, #FBBF24 100%);
+  background: linear-gradient(135deg, #043d83 0%, #A78BFA 30%, #D946EF 55%, #F472B6 75%, #FBBF24 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
+
+.text-gradient-navy-blue {
+  background: linear-gradient(135deg, #0B1F4F 0%, #174A8B 55%, #2563A9 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -159,7 +167,7 @@
 
 /* ── Glassmorphism Card Surface ── */
 .glass-card {
-  background: linear-gradient(160deg, rgba(76,29,149,0.45) 0%, rgba(45,27,105,0.40) 45%, rgba(30,15,69,0.50) 100%);
+  background: linear-gradient(160deg, rgba(76,29,149,0.45) 0%, rgba(49, 25, 129, 0.4) 45%, rgba(30,15,69,0.50) 100%);
   backdrop-filter: blur(18px) saturate(150%);
   -webkit-backdrop-filter: blur(18px) saturate(150%);
   border: 1px solid rgba(217,70,239,0.25);
@@ -201,7 +209,7 @@
     radial-gradient(ellipse 80% 60% at 20% 0%, rgba(217,70,239,0.22), transparent 50%),
     radial-gradient(ellipse 60% 40% at 100% 100%, rgba(96,165,250,0.18), transparent 50%),
     linear-gradient(180deg, rgba(76,29,149,0.65) 0%, rgba(45,27,105,0.55) 50%, rgba(30,15,69,0.70) 100%);
-  border: 1px solid rgba(217,70,239,0.28);
+  border: 1px solid rgba(205, 59, 228, 0.28);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.10),
     inset 0 0 0 1px rgba(244,114,182,0.08),
@@ -222,16 +230,25 @@
 /* ── Section Background Aurora Gradients (use inline style too) ── */
 .section-aurora-bg {
   background:
-    radial-gradient(ellipse 70% 50% at 15% 0%, rgba(217,70,239,0.16), transparent 55%),
-    radial-gradient(ellipse 60% 45% at 85% 100%, rgba(96,165,250,0.14), transparent 55%),
-    linear-gradient(180deg, #15092e 0%, #1e0f45 50%, #15092e 100%);
+    radial-gradient(ellipse 70% 55% at 12% 0%, rgba(37,99,169,0.14), transparent 58%),
+    radial-gradient(ellipse 65% 50% at 88% 100%, rgba(59,130,246,0.16), transparent 58%),
+    linear-gradient(145deg, #e7e6e6 0%, #F3F8FF 48%, #e7e6e6 100%);
 }
 
 .section-aurora-alt {
   background:
-    radial-gradient(ellipse 60% 45% at 90% 0%, rgba(244,114,182,0.16), transparent 55%),
-    radial-gradient(ellipse 70% 50% at 10% 100%, rgba(124,58,237,0.16), transparent 55%),
-    linear-gradient(180deg, #1a0d3a 0%, #2d1b69 50%, #1a0d3a 100%);
+    radial-gradient(ellipse 65% 50% at 92% 4%, rgba(11,31,79,0.13), transparent 58%),
+    radial-gradient(ellipse 70% 55% at 8% 96%, rgba(96,165,250,0.18), transparent 60%),
+    linear-gradient(145deg, #F8FBFF 0%, #EAF3FF 48%, #D4E5FC 100%);
+}
+
+.section-aurora-bg h2,
+.section-aurora-bg h2 span,
+.section-aurora-alt h2,
+.section-aurora-alt h2 span {
+  color: #0B1F4F !important;
+  background: none !important;
+  -webkit-text-fill-color: #0B1F4F !important;
 }
 
 /* ── Subtle top edge highlight ── */
@@ -248,6 +265,56 @@
   z-index: 2;
 }
 
+/* Glass surfaces: preserve the existing navy-violet identity while allowing
+   the light page background and ambient gradients to show through. */
+.glass-card,
+.feature-card-purple,
+.aurora-card-dark,
+.aurora-mini-card {
+  color: #0B1F4F !important;
+  -webkit-text-fill-color: #0B1F4F;
+  background: linear-gradient(145deg, rgba(255,255,255,0.58) 0%, rgba(235,244,255,0.42) 52%, rgba(204,225,255,0.34) 100%) !important;
+  border-color: rgba(255,255,255,0.72) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.82),
+    inset 0 0 0 1px rgba(255,255,255,0.22),
+    0 22px 54px rgba(11,31,79,0.12),
+    0 0 52px rgba(96,165,250,0.14) !important;
+  backdrop-filter: blur(22px) saturate(145%);
+  -webkit-backdrop-filter: blur(22px) saturate(145%);
+}
+
+.card-glow:hover {
+  box-shadow:
+    0 0 0 1px rgba(191,219,254,0.65),
+    0 26px 64px rgba(11,31,79,0.17),
+    0 0 62px rgba(96,165,250,0.24),
+    inset 0 1px 0 rgba(255,255,255,0.88) !important;
+  border-color: rgba(255,255,255,0.92) !important;
+}
+
+.glass-card :is(h2, h3, p, span),
+.feature-card-purple :is(h2, h3, p, span),
+.aurora-card-dark :is(h2, h3, p, span),
+.aurora-mini-card :is(h2, h3, p, span) {
+  color: #0B1F4F !important;
+  -webkit-text-fill-color: #0B1F4F;
+}
+
+/* Light page surfaces always receive dark type, including legacy utility
+   classes that previously assumed the old dark-purple section backgrounds. */
+.section-aurora-bg :is(h1, h2, h3, h4, p, span, li, blockquote),
+.section-aurora-alt :is(h1, h2, h3, h4, p, span, li, blockquote) {
+  color: #0B1F4F !important;
+  -webkit-text-fill-color: #0B1F4F;
+}
+
+/* Product previews and the footer intentionally remain dark surfaces. */
+.dark-surface :is(h1, h2, h3, h4, p, span, li, blockquote) {
+  color: #F5F8FF !important;
+  -webkit-text-fill-color: #F5F8FF;
+}
+
 @layer base {
   html { scroll-behavior: smooth; }
   html.lenis, html.lenis body { height: auto; }
@@ -255,15 +322,14 @@
   .lenis.lenis-stopped { overflow: hidden; }
   .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
   body {
-    @apply bg-[#15092e] text-[#FAF7FF] antialiased selection:bg-[#D946EF] selection:text-white;
+    @apply bg-[#F3F8FF] text-[#0B1F4F] antialiased selection:bg-[#2563A9] selection:text-white;
     background-image:
-      radial-gradient(ellipse 90% 55% at 50% -8%, rgba(217,70,239,0.18), transparent 60%),
-      radial-gradient(ellipse 70% 50% at 10% 40%, rgba(124,58,237,0.14), transparent 55%),
-      radial-gradient(ellipse 75% 50% at 90% 70%, rgba(96,165,250,0.10), transparent 55%),
-      radial-gradient(ellipse 60% 45% at 50% 110%, rgba(244,114,182,0.14), transparent 55%);
+      radial-gradient(ellipse 90% 55% at 50% -8%, rgba(37,99,169,0.12), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 10% 40%, rgba(96,165,250,0.12), transparent 55%),
+      radial-gradient(ellipse 75% 50% at 90% 70%, rgba(11,31,79,0.10), transparent 55%);
     background-attachment: fixed;
   }
-  h1, h2, h3 { font-family: var(--font-manrope), sans-serif; }
+  h1, h2, h3 { font-family: var(--font-dm-sans), sans-serif; }
   :focus-visible { @apply outline outline-2 outline-offset-4 outline-fuchsia-400; }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }

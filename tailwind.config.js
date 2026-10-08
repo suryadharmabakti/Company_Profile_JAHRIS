@@ -3,8 +3,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        display: ['var(--font-manrope)', 'sans-serif'],
-        sans: ['var(--font-inter)', 'sans-serif'],
+        display: ['var(--font-dm-sans)', 'sans-serif'],
+        sans: ['var(--font-dm-sans)', 'sans-serif'],
       },
       colors: {
         ink: '#15092e',

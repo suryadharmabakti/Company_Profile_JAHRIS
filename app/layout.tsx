@@ -1,9 +1,8 @@
 import type { Metadata } from 'next'
-import { Inter, Manrope } from 'next/font/google'
+import { DM_Sans } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' })
-const manrope = Manrope({ subsets: ['latin'], variable: '--font-manrope', display: 'swap' })
+const dmSans = DM_Sans({ subsets: ['latin'], variable: '--font-dm-sans', display: 'swap' })
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://jahris.id'),
@@ -17,5 +16,5 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="id"><body className={`${inter.variable} ${manrope.variable} font-sans`}>{children}</body></html>
+  return <html lang="id"><body className={`${dmSans.variable} font-sans`}>{children}</body></html>
 }

@@ -4,56 +4,12 @@ import { Navbar, Reveal, Counter } from './components/interactive'
 import { MotionSystem } from './components/motion-system'
 import { ProductShowcase } from './components/product-showcase'
 import { Container, Eyebrow } from './components/ui'
-
-const modules = [
-  { title: 'Data Karyawan', icon: Users, copy: 'Seluruh informasi karyawan tersimpan rapi dalam satu pusat data.', points: ['Jabatan & divisi', 'Status kerja', 'Riwayat & dokumen'] },
-  { title: 'Absensi & Kehadiran', icon: Fingerprint, copy: 'Catat kehadiran harian dan pantau keterlambatan lebih mudah.', points: ['Absensi berbasis web', 'Rekap otomatis', 'Monitoring izin'] },
-  { title: 'Cuti & Izin', icon: CalendarCheck2, copy: 'Alur pengajuan hingga persetujuan tanpa dokumen yang tercecer.', points: ['Pengajuan online', 'Persetujuan atasan', 'Sisa kuota & riwayat'] },
-  { title: 'Payroll', icon: Wallet, copy: 'Kelola penggajian dengan komponen yang transparan.', points: ['Perhitungan gaji', 'Tunjangan & potongan', 'Slip gaji digital'] },
-  { title: 'Penilaian Kinerja', icon: BarChart3, copy: 'Pantau perkembangan karyawan melalui indikator yang jelas.', points: ['Evaluasi kinerja', 'Indikator KPI', 'Laporan perkembangan'] },
-  { title: 'Reimbursement', icon: CircleDollarSign, copy: 'Klaim karyawan tercatat dan siap direkap kapan saja.', points: ['Rekap per karyawan', 'Laporan berkala', 'Ekspor Excel / PDF'] },
-  { title: 'Dashboard & Laporan', icon: LayoutDashboard, copy: 'Informasi SDM penting hadir dalam satu tampilan.', points: ['Dashboard manajemen', 'Laporan real-time', 'Ekspor Excel / PDF'] },
-]
-const benefits = [
-  ['01', 'Bekerja dari mana saja', 'Akses melalui laptop maupun smartphone, tanpa memasang aplikasi khusus.'],
-  ['02', 'Mudah digunakan', 'Antarmuka modern membantu tim HR dan karyawan bekerja lebih nyaman.'],
-  ['03', 'Siap untuk banyak perusahaan', 'Satu platform dapat digunakan untuk mengelola lebih dari satu perusahaan.'],
-  ['04', 'Mengikuti kebutuhan Anda', 'Sistem fleksibel dan dapat disesuaikan dengan proses perusahaan.'],
-  ['05', 'Tetap membawa identitas brand', 'Pengalaman dapat diselaraskan dengan branding perusahaan.'],
-]
-const steps = ['Analisis kebutuhan perusahaan', 'Penyesuaian sistem', 'Implementasi & konfigurasi', 'Pelatihan pengguna', 'Pendampingan & evaluasi']
-const pricing = [
-  { name: 'Basic', audience: 'Untuk perusahaan kecil hingga menengah', old: 'Rp 9.990', price: 'Rp 7.499', unit: '/karyawan/bulan', features: ['Dashboard HR', 'Absensi & kehadiran', 'Pengajuan cuti / izin', 'Basic reporting'], cta: 'Pilih Basic', href: 'mailto:hrmanagementjaxer@gmail.com?subject=Konsultasi%20JAHRIS%20Basic' },
-  { name: 'Pro', audience: 'Untuk tim yang sedang bertumbuh', old: 'Rp 12.990', price: 'Rp 9.990', unit: '/karyawan/bulan', features: ['Semua fitur Basic', 'Pengelolaan keuangan', 'Manajemen tugas', 'Penilaian kinerja (KPI)'], cta: 'Pilih Pro', href: 'mailto:hrmanagementjaxer@gmail.com?subject=Konsultasi%20JAHRIS%20Pro', popular: true },
-  { name: 'Enterprise', audience: 'Untuk korporasi dan multi-cabang', price: 'Custom', unit: 'sesuai kebutuhan', features: ['Semua fitur lengkap', 'Face recognition (AI check-in/out)', 'Integrasi khusus HRIS / payroll', 'Dedicated support / SLA'], cta: 'Hubungi Sales', href: 'mailto:hrmanagementjaxer@gmail.com?subject=Konsultasi%20JAHRIS%20Enterprise' },
-]
-
-const testimonials = [
-  {
-    quote: 'JAHRIS membantu tim HR kami memangkas waktu administrasi hingga 60%. Payroll bulanan yang biasanya 3 hari, kini selesai dalam setengah hari.',
-    name: 'Rina Kusumawati',
-    role: 'HR Manager',
-    company: 'Manufaktur MultiCabang',
-  },
-  {
-    quote: 'Yang kami sukai dari JAHRIS adalah antarmukanya yang bersih. Karyawan tanpa pelatihan pun langsung bisa mengajukan cuti dan melihat slip gaji.',
-    name: 'Andi Pratama',
-    role: 'Kepala Divisi SDM',
-    company: 'Perusahaan Dagang Nasional',
-  },
-  {
-    quote: 'Implementasinya cepat. Dalam 2 minggu sistem sudah live, dan tim JAHRIS mendampingi sampai semua user terbiasa.',
-    name: 'Siti Rahayu',
-    role: 'Direktur Operasional',
-    company: 'Jasa Konsultasi 200+ Karyawan',
-  },
-]
-
-const industries = ['Manufaktur', 'Perdagangan', 'Jasa', 'Kesehatan', 'Pendidikan', 'Logistik', 'Properti', 'Konsultan', 'Retail', 'Hospitality']
+import { benefits, industries, modules, pricing, steps, testimonials } from './components/home/data'
+import { Footer } from './components/home/footer'
 
 function Hero() {
   return (
-    <section id="home" className="noise-texture relative overflow-hidden bg-[linear-gradient(165deg,#15092e_0%,#2d1b69_40%,#1a0d3a_100%)] pt-32 text-[#FAF7FF] sm:pt-36">
+    <section id="home" className="noise-texture relative min-h-[100svh] overflow-hidden bg-[linear-gradient(145deg,#FFFFFF_0%,#F1F7FF_48%,#DCEBFF_100%)] text-[#0B1F4F]">
       <div
         className="pointer-events-none absolute -left-32 top-1/4 -z-10 h-[600px] w-[700px] animate-blob-drift-slow rounded-full blur-[130px]"
         style={{ background: 'radial-gradient(circle, rgba(217,70,239,0.22) 0%, rgba(124,58,237,0.12) 40%, transparent 70%)' }}
@@ -73,21 +29,21 @@ function Hero() {
       <div className="hero-tech-grid pointer-events-none absolute inset-0 -z-10 opacity-80" />
       <div className="horizon-glow animate-horizon" />
 
-      <Container className="relative grid min-h-[640px] items-center gap-12 pb-20 lg:grid-cols-[.95fr_1.05fr]">
+      <Container className="relative grid min-h-[100svh] items-center gap-12 pb-20 pt-32 sm:pt-36 lg:grid-cols-[.95fr_1.05fr]">
         <Reveal>
           <Eyebrow>JAHRIS / PLATFORM HR TERPADU</Eyebrow>
 
           <h1 className="mt-6 max-w-2xl font-display text-[clamp(2.8rem,5vw,5rem)] font-semibold leading-[1.08] tracking-[-.045em]">
-            <span className="block overflow-hidden"><span data-hero-line className="block text-[#F0EAFF]">Kelola tim.</span></span>
-            <span className="block overflow-hidden"><span data-hero-line className="block text-[#F0EAFF]">Bekerja lebih</span></span>
+            <span className="block overflow-hidden"><span data-hero-line className="block text-[#0B1F4F]">Kelola tim.</span></span>
+            <span className="block overflow-hidden"><span data-hero-line className="block text-[#0B1F4F]">Bekerja lebih</span></span>
             <span className="block overflow-hidden">
-              <span data-hero-line className="block text-gradient-white-violet">
+              <span data-hero-line className="block text-gradient-navy-blue">
                 terarah.
               </span>
             </span>
           </h1>
 
-          <p data-hero-description className="mt-6 max-w-xl text-base leading-8 text-[#B8A8DE] sm:text-lg">
+          <p data-hero-description className="mt-6 max-w-xl text-base leading-8 text-[#466384] sm:text-lg">
             JAHRIS menyatukan data karyawan, absensi, cuti, payroll, kinerja, keuangan, dan tugas dalam satu sistem manajemen SDM berbasis web.
           </p>
 
@@ -108,37 +64,24 @@ function Hero() {
             </a>
           </div>
 
-          <div data-hero-stack className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-[rgba(255,255,255,0.09)] pt-5 text-sm text-[#9D8CC4]">
+          <div data-hero-stack className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-[rgba(11,31,79,0.12)] pt-5 text-sm text-[#466384]">
             <span className="flex items-center gap-2 transition-colors hover:text-[#DDD6FE]"><CheckCircle2 size={17} className="text-[#A78BFA]"/> Implementasi ±14 hari</span>
             <span className="flex items-center gap-2 transition-colors hover:text-[#DDD6FE]"><Smartphone size={17} className="text-[#A78BFA]"/> Laptop & smartphone</span>
             <span className="flex items-center gap-2 transition-colors hover:text-[#DDD6FE]"><ShieldCheck size={17} className="text-[#A78BFA]"/> Berbasis web</span>
           </div>
         </Reveal>
 
-        <div data-hero-visual className="relative min-w-0">
-          <div className="pointer-events-none absolute -inset-8 -z-10 rounded-[40px] blur-[70px]" style={{ background: 'radial-gradient(ellipse at 50% 50%, rgba(217,70,239,0.28), rgba(96,165,250,0.16) 45%, rgba(76,29,149,0.12) 60%, transparent 75%)' }} />
-          <div className="glass-card top-edge-highlight rounded-[28px] p-3">
-            <div className="relative overflow-hidden rounded-[20px] border border-white/[0.08] bg-[#1a0d3a]">
-              <Image
-                src="/proposal/p6-2.jpg"
-                alt="Tampilan dashboard manajemen tugas JAHRIS"
-                width={1800}
-                height={1024}
-                priority
-                className="h-[260px] w-full object-cover object-left-top sm:h-[380px] lg:h-[420px]"
-              />
-              <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-            </div>
-            <div className="flex items-center justify-between px-3 py-3 text-white">
-              <div>
-                <p className="text-[10px] font-extrabold tracking-[.18em] text-[#A78BFA]">JAHRIS / HR MANAGEMENT</p>
-                <p className="mt-1 text-sm font-bold text-[#E8DEFF]">Semua pekerjaan lebih terlihat jelas.</p>
-              </div>
-              <span className="grid h-9 w-9 place-items-center rounded-full border border-[rgba(167,139,250,0.28)] bg-[rgba(255,255,255,0.06)] text-white backdrop-blur-sm transition hover:bg-white/10">
-                <ArrowUpRight size={18}/>
-              </span>
-            </div>
-          </div>
+        <div data-hero-visual className="relative mx-auto w-full max-w-[980px] px-1 py-4 sm:px-3 lg:scale-[1.4]">
+          <div className="pointer-events-none absolute inset-[12%] -z-10 rounded-full bg-[radial-gradient(ellipse,rgba(37,99,169,0.18),rgba(96,165,250,0.12)_48%,transparent_72%)] blur-[58px]" />
+          <Image
+            src="/hero-device-collage.png"
+            alt="Rangkaian dashboard dan perangkat JAHRIS"
+            width={1536}
+            height={1024}
+            priority
+            sizes="(max-width: 1024px) 94vw, 760px"
+            className="h-auto w-full object-contain drop-shadow-[0_24px_35px_rgba(11,31,79,0.16)]"
+          />
         </div>
       </Container>
     </section>
@@ -295,8 +238,8 @@ function ModulesSection() {
         </Reveal>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-7">
-          <Reveal>
-            <article className="aurora-card-dark top-edge-highlight card-glow rounded-3xl p-7 backdrop-blur-md lg:col-span-3">
+          <Reveal className="lg:col-span-3">
+            <article className="aurora-card-dark top-edge-highlight card-glow h-full rounded-3xl p-7 backdrop-blur-md">
               <div className="grid h-12 w-12 place-items-center rounded-2xl border border-[rgba(244,114,182,0.40)] bg-gradient-to-br from-[#6D28D9] via-[#A78BFA] to-[#D946EF] text-[#15092e] shadow-[0_0_40px_rgba(217,70,239,0.30)]">
                 <Users size={22}/>
               </div>
@@ -320,8 +263,8 @@ function ModulesSection() {
               </div>
             </article>
           </Reveal>
-          <Reveal>
-            <article className="aurora-card-dark top-edge-highlight card-glow rounded-3xl p-7 backdrop-blur-md lg:col-span-4">
+          <Reveal className="lg:col-span-4">
+            <article className="aurora-card-dark top-edge-highlight card-glow h-full rounded-3xl p-7 backdrop-blur-md">
               <div className="grid h-12 w-12 place-items-center rounded-2xl border border-[rgba(96,165,250,0.45)] bg-gradient-to-br from-[#60A5FA] via-[#A78BFA] to-[#6D28D9] text-[#15092e] shadow-[0_0_40px_rgba(96,165,250,0.28)]">
                 <LayoutDashboard size={22}/>
               </div>
@@ -345,8 +288,8 @@ function ModulesSection() {
               </div>
             </article>
           </Reveal>
-          <Reveal>
-            <article className="aurora-card-dark top-edge-highlight card-glow rounded-3xl p-7 backdrop-blur-md lg:col-span-7">
+          <Reveal className="lg:col-span-7">
+            <article className="aurora-card-dark top-edge-highlight card-glow h-full rounded-3xl p-7 backdrop-blur-md">
               <div className="grid h-12 w-12 place-items-center rounded-2xl border border-[rgba(244,114,182,0.45)] bg-gradient-to-br from-[#F472B6] via-[#A78BFA] to-[#6D28D9] text-[#15092e] shadow-[0_0_40px_rgba(244,114,182,0.30)] animate-aurora">
                 <Workflow size={22}/>
               </div>
@@ -474,8 +417,8 @@ function OperationsSection() {
               </div>
             </article>
           </Reveal>
-          <Reveal>
-            <article className="aurora-card-dark top-edge-highlight card-glow rounded-3xl p-7 backdrop-blur-md lg:col-span-2">
+          <Reveal className="lg:col-span-2">
+            <article className="aurora-card-dark top-edge-highlight card-glow h-full rounded-3xl p-7 backdrop-blur-md">
               <div className="grid h-12 w-12 place-items-center rounded-2xl border border-[rgba(244,114,182,0.45)] bg-gradient-to-br from-[#F472B6] via-[#A78BFA] to-[#6D28D9] text-[#15092e] shadow-[0_0_40px_rgba(244,114,182,0.28)] animate-aurora">
                 <Globe size={22}/>
               </div>
@@ -950,13 +893,13 @@ function CTA() {
   )
 }
 
-function Footer() {
+function LegacyFooter() {
   return (
     <footer className="bg-[#120826] border-t border-[rgba(217,70,239,0.22)] text-[#B8A8DE]">
       <Container className="grid gap-10 py-14 md:grid-cols-[1.5fr_1fr_1.2fr_1fr]">
         <div>
-          <a href="#home" className="font-display text-3xl font-extrabold tracking-[-.06em] text-[#FAF7FF]">
-            JAHRIS<span className="text-gradient-aurora animate-aurora">.</span>
+          <a href="#home" className="inline-flex">
+            <Image src="/logo_white.png" alt="JAHRIS" width={190} height={39} className="h-auto w-[156px]" />
           </a>
           <p className="mt-4 max-w-xs text-sm leading-7 text-[#C4B5FD]">
             Sistem manajemen SDM berbasis web dari PT JAXER Group Indonesia.
@@ -1017,7 +960,6 @@ export default function Page() {
         <Hero />
         <TrustedBy />
         <SyncSection />
-        <TestimonialBlock {...testimonials[0]} />
         <ModulesSection />
         <OperationsSection />
         <NetworkSection />
