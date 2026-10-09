@@ -28,7 +28,6 @@ export function Navbar() {
       lastScrollY.current = currentScrollY
     }
     lastScrollY.current = window.scrollY
-    setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', update, { passive: true })
     return () => window.removeEventListener('scroll', update)
   }, [])

@@ -457,9 +457,11 @@ main section { border-color: var(--page-line); }
   -webkit-text-fill-color: #FFFFFF !important;
 }
 
-#pricing .pricing-badge {
-  color: #12264F !important;
-  -webkit-text-fill-color: #12264F !important;
+#pricing .pricing-featured .pricing-badge {
+  color: #081B3F !important;
+  -webkit-text-fill-color: #081B3F !important;
+  font-weight: 800 !important;
+  opacity: 1 !important;
 }
 
 /* Shared finishing pass: quiet depth and consistent spacing across glass UI. */
@@ -523,6 +525,63 @@ main > section {
 .intro-logo { animation: jahris-intro-logo 720ms cubic-bezier(.22, 1, .36, 1) both; }
 .intro-hello { animation: jahris-intro-text 720ms 130ms cubic-bezier(.22, 1, .36, 1) both; }
 .intro-subtitle { animation: jahris-intro-text 650ms 230ms cubic-bezier(.22, 1, .36, 1) both; }
+
+@keyframes jahris-intro-brand {
+  0% { opacity: 0; transform: translateY(12px) scale(.92); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes jahris-intro-progress {
+  from { transform: scaleX(0); transform-origin: left; }
+  to { transform: scaleX(1); transform-origin: left; }
+}
+
+@keyframes jahris-intro-dismiss {
+  0%, 84% { opacity: 1; visibility: visible; }
+  100% { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+
+.intro-loader { animation: jahris-intro-dismiss 4s cubic-bezier(.22, 1, .36, 1) forwards; }
+.intro-brand { animation: jahris-intro-brand 620ms 2.55s cubic-bezier(.22, 1, .36, 1) both; }
+.intro-progress { animation: jahris-intro-progress 4s linear both; }
+.intro-brand .intro-progress { animation-duration: 1.45s; animation-delay: 2.55s; }
+
+/* Monochrome linework for the compact feature cards. It begins on the right
+   and fades before the center so the content always remains clear. */
+.feature-pattern {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 56%;
+  opacity: .16;
+  background-image:
+    repeating-radial-gradient(circle at 100% 0%, transparent 0 11px, #12264F 12px 13px, transparent 14px 25px),
+    repeating-radial-gradient(circle at 62% 100%, transparent 0 14px, #12264F 15px 16px, transparent 17px 31px);
+  background-size: 190px 190px, 165px 165px;
+  background-position: right -26px top -38px, right 18px bottom -72px;
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.2) 26%, #000 68%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.2) 26%, #000 68%);
+}
+
+/* A restrained, Apple-inspired media edge for the hero visual. */
+.apple-media-frame {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .82);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, .58);
+  padding: 5px;
+  box-shadow: 0 24px 60px rgba(18, 38, 79, .16), inset 0 1px 0 rgba(255, 255, 255, .95);
+  backdrop-filter: blur(18px) saturate(135%);
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
+}
+
+.apple-media-frame > img {
+  border-radius: 25px;
+}
+
+.product-caption {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
 
 @supports not (backdrop-filter: blur(1px)) {
   .glass-card, .feature-card-purple, .aurora-card-dark, .aurora-mini-card { background: rgba(255,255,255,0.94) !important; }

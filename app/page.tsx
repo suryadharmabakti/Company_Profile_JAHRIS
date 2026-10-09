@@ -75,12 +75,12 @@ function Hero() {
         <div data-hero-visual className="relative mx-auto w-full max-w-[960px]">
           <Image
             src="/hero-device-collage.png"
-            alt="Rangkaian dashboard dan perangkat JAHRIS"
-            width={1536}
-            height={1024}
+            alt="Dashboard JAHRIS pada perangkat seluler"
+            width={1920}
+            height={546}
             priority
-            sizes="(max-width: 1024px) 94vw, 760px"
-            className="h-auto w-full object-contain drop-shadow-[0_24px_35px_rgba(11,31,79,0.16)]"
+            sizes="(max-width: 1024px) 94vw, 960px"
+            className="h-auto w-full object-cover drop-shadow-[0_24px_35px_rgba(11,31,79,0.16)]"
           />
         </div>
       </Container>
@@ -209,10 +209,7 @@ function ModulesSection() {
       <Container className="relative z-10">
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
-            <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl border border-[#E1E6ED] bg-white/70 text-[#12264F] shadow-[0_10px_26px_rgba(18,38,79,.08)]">
-              <Boxes size={24}/>
-            </div>
-            <h2 className="mt-5 font-display text-[clamp(2rem,4vw,3.2rem)] font-semibold leading-[1.2] tracking-[-.04em]">
+            <h2 className="font-display text-[clamp(2rem,4vw,3.2rem)] font-semibold leading-[1.2] tracking-[-.04em]">
               <span>Semua kebutuhan HR,</span>
               <br className="hidden sm:block"/>
               <span> dalam satu dashboard.</span>
@@ -224,7 +221,7 @@ function ModulesSection() {
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {badges.map(({ icon: Icon, title, desc }) => (
               <div key={title} className="aurora-mini-card card-glow relative flex items-start gap-4 overflow-hidden rounded-2xl p-5 transition-all">
-                <div className="absolute right-0 top-0 h-16 w-16 rounded-bl-full bg-[#F2F4F7]/80" />
+                <div aria-hidden="true" className="feature-pattern" />
                 <div className="relative grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-[#E1E6ED] bg-white/80 text-[#12264F] shadow-sm">
                   <Icon size={17}/>
                 </div>
@@ -327,9 +324,7 @@ function WorkflowModulesSection() {
       <Container>
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-[#DDE5F0] bg-white/70 px-4 py-2 text-xs font-semibold tracking-[.12em] text-[#315FBA] shadow-sm">
-            </span>
-            <h2 className="mt-5 font-display text-[clamp(2rem,4vw,3.1rem)] font-semibold leading-[1.15] tracking-[-.04em] text-[#12264F]">
+            <h2 className="font-display text-[clamp(2rem,4vw,3.1rem)] font-semibold leading-[1.15] tracking-[-.04em] text-[#12264F]">
               Operasional HR, tanpa pekerjaan berulang.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-[#55627D]">
@@ -831,7 +826,7 @@ function Pricing() {
                 style={plan.popular ? { backgroundSize: '200% 200%' } : undefined}
               >
                 {plan.popular && (
-                  <span className="pricing-badge absolute -top-3 left-7 rounded-full border border-[#DDE7F5] bg-white px-4 py-1.5 text-[10px] font-black tracking-widest text-[#12264F] shadow-[0_6px_18px_rgba(18,38,79,.16)]">
+                  <span className="pricing-badge absolute -top-3 left-7 z-10 rounded-full border border-[#BFCDE0] bg-white px-4 py-1.5 text-[11px] font-extrabold leading-none tracking-[.08em] text-[#081B3F] shadow-[0_6px_18px_rgba(18,38,79,.16)]">
                     PALING POPULER
                   </span>
                 )}
@@ -932,7 +927,7 @@ function CTA() {
       <div className="pointer-events-none absolute -top-20 -right-20 h-[600px] w-[600px] animate-blob-drift rounded-full blur-[150px]" style={{ background: 'radial-gradient(circle, rgba(244,114,182,0.28) 0%, rgba(96,165,250,0.14) 45%, transparent 65%)' }} />
       <Container className="relative z-10 grid items-center gap-12 lg:grid-cols-[1.1fr_.9fr]">
         <Reveal>
-          <Eyebrow>Mari berkolaborasi</Eyebrow>
+
           <h2 className="mt-5 font-display text-[clamp(2rem,4.5vw,3.5rem)] font-bold tracking-[-.05em]">
             <span className="text-gradient-aurora animate-aurora">Buat pengelolaan SDM</span><br/>
             <span className="text-[#FAF7FF]">lebih sederhana.</span>
@@ -959,8 +954,8 @@ function CTA() {
         </Reveal>
 
         <Reveal>
-          <div className="glass-card top-edge-highlight rounded-[28px] p-3">
-            <div className="relative h-[320px] overflow-hidden rounded-[20px] border border-white/[0.08] bg-[#1a0d3a] sm:h-[380px]">
+          <div className="apple-media-frame">
+            <div className="relative h-[320px] overflow-hidden rounded-[25px] bg-[#1a0d3a] sm:h-[380px]">
               <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-px bg-gradient-to-r from-transparent via-[rgba(244,114,182,0.45)] to-transparent" />
               <Image
                 src="/proposal/p5-3.jpg"
@@ -969,7 +964,7 @@ function CTA() {
                 sizes="(max-width: 1024px) 100vw, 560px"
                 className="object-cover object-center"
               />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#1a0d3a] via-[#1a0d3a]/80 to-transparent px-6 py-6 pt-16 text-sm font-semibold text-[#F5F3FF] sm:px-7">
+              <div className="product-caption absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#1a0d3a] via-[#1a0d3a]/80 to-transparent px-6 py-6 pt-16 text-sm font-semibold sm:px-7">
                 Akses JAHRIS di mana pun tim bekerja.
               </div>
             </div>

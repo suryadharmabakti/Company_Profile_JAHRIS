@@ -52,9 +52,9 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-[#D2D2D7] pt-4 text-[12px] text-[#6E6E73]">
-          <span>© 2026 PT JAXER Group Indonesia. Hak cipta dilindungi.</span>
-          <span className="inline-flex items-center gap-1.5"><Mail size={13} /> Dukungan JAHRIS <Phone size={13} className="ml-2" /> Senin–Jumat</span>
+        <div className="mt-8 grid gap-3 border-t border-[#D2D2D7] pt-4 text-center text-[12px] text-[#6E6E73] sm:grid-cols-3 sm:items-center">
+          <span className="sm:col-start-2">© 2026 PT JAXER Group Indonesia. Hak cipta dilindungi.</span>
+          <span className="inline-flex items-center justify-center gap-1.5 sm:col-start-3 sm:justify-self-end"><Mail size={13} /> Dukungan JAHRIS <Phone size={13} className="ml-2" /> Senin–Jumat</span>
         </div>
       </Container>
     </footer>
