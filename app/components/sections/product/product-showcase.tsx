@@ -7,10 +7,10 @@ const tabs = ['Dashboard', 'Absensi', 'Payroll', 'Tugas'] as const
 type Tab = typeof tabs[number]
 
 const screens: Record<Tab, { src: string; alt: string; caption: string }> = {
-  Dashboard: { src: '/Dhashboard.png', alt: 'Dashboard JAHRIS', caption: 'Ringkasan karyawan, kehadiran, dan pengajuan terbaru dalam satu halaman.' },
-  Absensi: { src: '/Absensi.png', alt: 'Halaman absensi JAHRIS', caption: 'Rekap absensi harian otomatis, lengkap dengan status izin dan cuti.' },
-  Payroll: { src: '/Payroll.png', alt: 'Halaman payroll JAHRIS', caption: 'Gaji, komponen payroll, dan status pembayaran tersaji dengan rapi.' },
-  Tugas: { src: '/Task.png', alt: 'Halaman manajemen tugas JAHRIS', caption: 'Board tugas membantu tim memantau progres pekerjaan antar departemen.' },
+  Dashboard: { src: '/images/product/dashboard.png', alt: 'Dashboard JAHRIS', caption: 'Ringkasan karyawan, kehadiran, dan pengajuan terbaru dalam satu halaman.' },
+  Absensi: { src: '/images/product/attendance.png', alt: 'Halaman absensi JAHRIS', caption: 'Rekap absensi harian otomatis, lengkap dengan status izin dan cuti.' },
+  Payroll: { src: '/images/product/payroll.png', alt: 'Halaman payroll JAHRIS', caption: 'Gaji, komponen payroll, dan status pembayaran tersaji dengan rapi.' },
+  Tugas: { src: '/images/product/tasks.png', alt: 'Halaman manajemen tugas JAHRIS', caption: 'Board tugas membantu tim memantau progres pekerjaan antar departemen.' },
 }
 
 export function ProductShowcase() {

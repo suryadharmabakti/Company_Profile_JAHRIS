@@ -13,6 +13,11 @@ export const metadata: Metadata = {
   openGraph: { title: 'JAHRIS — Sistem Manajemen SDM Terpadu', description: 'Satu platform untuk pengelolaan SDM yang lebih terarah.', type: 'website' },
   twitter: { card: 'summary_large_image' },
   robots: { index: true, follow: true },
+  icons: {
+    icon: [{ url: '/images/brand/icon.png', type: 'image/png' }],
+    shortcut: ['/images/brand/icon.png'],
+    apple: [{ url: '/images/brand/icon.png', type: 'image/png' }],
+  },
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

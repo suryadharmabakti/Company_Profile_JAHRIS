@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { ArrowUpRight, Mail, Phone } from 'lucide-react'
-import { Container } from '../ui'
+import { Container } from '../../shared/ui'
 
 const linkClass = 'text-[13px] leading-6 text-[#6E6E73] transition-colors hover:text-[#12264F]'
 const headingClass = 'text-[13px] font-semibold text-[#1D1D1F]'
@@ -17,7 +17,7 @@ export function Footer() {
         <div className="mt-5 grid gap-8 border-t border-[#D2D2D7] pt-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
           <div>
             <a href="#home" className="inline-flex" aria-label="Kembali ke beranda JAHRIS">
-              <Image src="/jahris-logo.png" alt="JAHRIS" width={190} height={39} className="h-auto w-[132px]" />
+              <Image src="/images/brand/logo.png" alt="JAHRIS" width={190} height={39} className="h-auto w-[132px]" />
             </a>
             <p className="mt-3 max-w-[230px] text-[13px] leading-6 text-[#6E6E73]">Platform manajemen SDM dari PT JAXER Group Indonesia.</p>
             <a href="https://app.jahris.id" target="_blank" rel="noreferrer" className={`mt-3 inline-flex items-center gap-1.5 ${linkClass}`}>Buka aplikasi <ArrowUpRight size={14} /></a>
@@ -28,7 +28,7 @@ export function Footer() {
             <div className="mt-2 grid gap-1">
               <a href="#features" className={linkClass}>Fitur</a>
               <a href="#benefits" className={linkClass}>Keunggulan</a>
-              <a href="#dashboard" className={linkClass}>Dashboard</a>
+              <a href="#dashboard" className={linkClass}>Antarmuka</a>
               <a href="#pricing" className={linkClass}>Harga</a>
             </div>
           </div>

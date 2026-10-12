@@ -8,7 +8,7 @@ const links = [
   ['Beranda', '#home'],
   ['Fitur', '#features'],
   ['Keunggulan', '#benefits'],
-  ['Dashboard', '#dashboard'],
+  ['Antarmuka', '#dashboard'],
   ['Harga', '#pricing'],
   ['Kontak', '#contact'],
 ] as const
@@ -58,7 +58,7 @@ export function Navbar() {
           href="#home"
           className="flex h-11 items-center border-r border-[#DCE4EE] px-4 sm:px-5"
         >
-          <Image src="/jahris-logo.png" alt="JAHRIS" width={190} height={39} priority className="h-auto w-[112px] sm:w-[126px]" />
+          <Image src="/images/brand/logo.png" alt="JAHRIS" width={190} height={39} priority className="h-auto w-[112px] sm:w-[126px]" />
         </a>
 
         <div className="flex h-full items-center gap-2">
