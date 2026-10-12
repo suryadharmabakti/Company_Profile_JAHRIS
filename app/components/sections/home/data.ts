@@ -1,4 +1,4 @@
-import { BarChart3, CalendarCheck2, CircleDollarSign, Database, LayoutDashboard, ScanFace, Shield, Sparkles, Users, Wallet } from 'lucide-react'
+import { BarChart3, CalendarCheck2, CircleDollarSign, LayoutDashboard, ScanFace, Users, Wallet } from 'lucide-react'
 
 export const modules = [
   { title: 'Data Karyawan', icon: Users, points: ['Jabatan & divisi', 'Status kerja', 'Riwayat & dokumen'] },
@@ -16,9 +16,3 @@ export const pricing = [
   { name: 'Enterprise', audience: 'Untuk korporasi dan multi-cabang', price: 'Custom', unit: 'sesuai kebutuhan', features: ['Semua fitur lengkap', 'Integrasi khusus HRIS / payroll', 'Dedicated support / SLA'], cta: 'Hubungi Sales', href: 'https://wa.me/6281511496687?text=Halo%20JAHRIS%2C%20saya%20ingin%20konsultasi%20paket%20Enterprise.' },
 ]
 
-// Kept while legacy sections remain in the page source.
-export const benefits = [['01', 'Bekerja dari mana saja', 'Akses melalui laptop maupun smartphone, tanpa memasang aplikasi khusus.'], ['02', 'Mudah digunakan', 'Antarmuka modern membantu tim HR dan karyawan bekerja lebih nyaman.'], ['03', 'Siap untuk banyak perusahaan', 'Satu platform dapat digunakan untuk mengelola lebih dari satu perusahaan.'], ['04', 'Mengikuti kebutuhan Anda', 'Sistem fleksibel dan dapat disesuaikan dengan proses perusahaan.'], ['05', 'Tetap membawa identitas brand', 'Pengalaman dapat diselaraskan dengan branding perusahaan.']]
-export const steps = ['Analisis kebutuhan perusahaan', 'Penyesuaian sistem', 'Implementasi & konfigurasi', 'Pelatihan pengguna', 'Pendampingan & evaluasi']
-export const testimonials = [{ quote: 'JAHRIS membantu tim HR kami memangkas waktu administrasi hingga 60%.', name: 'Rina Kusumawati', role: 'HR Manager', company: 'Manufaktur MultiCabang' }, { quote: 'Antarmuka JAHRIS bersih dan mudah dipahami.', name: 'Andi Pratama', role: 'Kepala Divisi SDM', company: 'Perusahaan Dagang Nasional' }, { quote: 'Implementasinya cepat dan tim siap mendampingi.', name: 'Siti Rahayu', role: 'Direktur Operasional', company: 'Jasa Konsultasi' }]
-export const industries = ['Manufaktur', 'Perdagangan', 'Jasa', 'Kesehatan', 'Pendidikan', 'Logistik', 'Properti', 'Konsultan', 'Retail', 'Hospitality']
-export const badges = [{ icon: Database, title: 'Rekap Real-time', desc: 'Data langsung muncul di dashboard.' }, { icon: Shield, title: 'Keamanan Berlapis', desc: 'Enkripsi & backup data rutin.' }, { icon: Sparkles, title: 'UI Ramah Pengguna', desc: 'Karyawan cepat beradaptasi.' }]

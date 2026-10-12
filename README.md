@@ -27,7 +27,7 @@ app/
     effects/           Intro video dan sistem animasi
     layout/             Navbar dan primitive navigasi
     sections/
-      home/             Data dan footer landing page
+      home/             Section, data, dan footer landing page
       product/          Product showcase interaktif
     shared/             Container dan primitive UI bersama
   globals.css          Token dan style global
@@ -47,5 +47,5 @@ public/
 
 - Gunakan `next/image` untuk gambar statis di `public/images`.
 - Simpan video intro di `public/videos/intro.mp4`.
-- Semua link navigasi section dikelola di `app/components/interactive.tsx`.
+- Semua link navigasi section dikelola di `app/components/layout/navbar.tsx`.
 - Host development LAN yang diizinkan dikelola di `next.config.ts` melalui `allowedDevOrigins`.

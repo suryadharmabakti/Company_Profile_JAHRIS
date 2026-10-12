@@ -136,6 +136,3 @@ export function Reveal({ children, className = '' }: { children: ReactNode; clas
   return <div data-motion-reveal className={className}>{children}</div>
 }
 
-export function Counter({ to, suffix = '' }: { to: number; suffix?: string }) {
-  return <span>{to}{suffix}</span>
-}
