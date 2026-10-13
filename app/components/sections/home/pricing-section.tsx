@@ -78,7 +78,7 @@ export function PricingSection() {
         </div>
 
         <p className="mt-8 text-center text-xs leading-6 text-[#B8A8DE]">
-          Harga &ldquo;mulai dari&rdquo; dan ketersediaan fitur mengikuti proposal JAHRIS 2026; konfirmasi penawaran akhir dengan tim sales. Paket Pro ditujukan mulai Ã¢â€°Â¥50 karyawan, Enterprise mulai Ã¢â€°Â¥300 karyawan.
+          Harga &ldquo;mulai dari&rdquo; dan ketersediaan fitur mengikuti proposal JAHRIS 2026; konfirmasi penawaran akhir dengan tim sales. Paket Pro ditujukan mulai ≥50 karyawan, Enterprise mulai ≥300 karyawan.
         </p>
       </Container>
     </section>

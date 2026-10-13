@@ -1,4 +1,4 @@
-import { BarChart3, CheckCircle2, CircleDollarSign, Database, Globe, LayoutDashboard, Puzzle, Shield, Sparkles, Users, Workflow } from 'lucide-react'
+import { BarChart3, CheckCircle2, CircleDollarSign, Database, Globe, Puzzle, Shield, Sparkles, Users, Workflow } from 'lucide-react'
 import { Reveal } from '../../layout/navbar'
 import { Container } from '../../shared/ui'
 import { modules } from './data'
@@ -57,7 +57,7 @@ export function FeaturesSection() {
                 <Users size={22}/>
               </div>
               <h3 className="mt-5 font-display text-xl font-bold text-[#FAF7FF]">Data Karyawan & Kehadiran</h3>
-              <p className="mt-3 text-sm leading-7 text-[#C4B5FD]">Informasi personal, jabatan, status kerja, dan catatan kehadiran harian Ã¢â‚¬â€ tersimpan rapi dan mudah dicari.</p>
+              <p className="mt-3 text-sm leading-7 text-[#C4B5FD]">Informasi personal, jabatan, status kerja, dan catatan kehadiran harian — tersimpan rapi dan mudah dicari.</p>
               <div className="mt-7 grid gap-3 sm:grid-cols-2">
                 {modules.slice(0, 2).map(m => {
                   const ModIcon = m.icon
@@ -68,56 +68,8 @@ export function FeaturesSection() {
                       </div>
                       <div className="min-w-0">
                         <p className="text-sm font-bold text-[#FAF7FF]">{m.title}</p>
-                        <p className="mt-0.5 text-xs text-[#B8A8DE]">{m.points.join(' Ã‚Â· ')}</p>
+                        <p className="mt-0.5 text-xs text-[#B8A8DE]">{m.points.join(' · ')}</p>
                       </div>
-                    </div>
-                  )
-                })}
-              </div>
-            </article>
-          </Reveal>
-          <Reveal className="hidden lg:col-span-4">
-            <article className="aurora-card-dark top-edge-highlight card-glow h-full rounded-3xl p-7 backdrop-blur-md">
-              <div className="grid h-12 w-12 place-items-center rounded-2xl border border-[rgba(96,165,250,0.45)] bg-gradient-to-br from-[#60A5FA] via-[#A78BFA] to-[#6D28D9] text-[#15092e] shadow-[0_0_40px_rgba(96,165,250,0.28)]">
-                <LayoutDashboard size={22}/>
-              </div>
-              <h3 className="mt-5 font-display text-xl font-bold text-[#FAF7FF]">Payroll, Kinerja, dan Laporan</h3>
-              <p className="mt-3 text-sm leading-7 text-[#C4B5FD]">Hitung gaji otomatis berdasarkan absensi, pantau KPI, dan ekspor laporan ke Excel/PDF dalam satu klik.</p>
-              <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                {modules.slice(3).map(m => {
-                  const ModIcon = m.icon
-                  return (
-                    <div key={m.title} className="aurora-mini-card top-edge-highlight flex items-start gap-3 rounded-xl p-4">
-                      <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-gradient-to-br from-[#4C1D95] via-[#7C3AED] to-[#2D1B69] text-[#F5F3FF] shadow-[0_0_18px_rgba(167,139,250,0.22)]">
-                        <ModIcon size={18}/>
-                      </div>
-                      <div className="min-w-0">
-                        <p className="text-sm font-bold text-[#FAF7FF]">{m.title}</p>
-                        <p className="mt-0.5 text-xs leading-5 text-[#B8A8DE]">{m.points.join(' Ã‚Â· ')}</p>
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
-            </article>
-          </Reveal>
-          <Reveal className="hidden lg:col-span-7">
-            <article className="aurora-card-dark top-edge-highlight card-glow h-full rounded-3xl p-7 backdrop-blur-md">
-              <div className="grid h-12 w-12 place-items-center rounded-2xl border border-[rgba(244,114,182,0.45)] bg-gradient-to-br from-[#F472B6] via-[#A78BFA] to-[#6D28D9] text-[#15092e] shadow-[0_0_40px_rgba(244,114,182,0.30)] animate-aurora">
-                <Workflow size={22}/>
-              </div>
-              <h3 className="mt-5 font-display text-xl font-bold text-[#FAF7FF]">Cuti, izin, dan reimbursement Ã¢â‚¬â€ tanpa kertas.</h3>
-              <p className="mt-3 max-w-2xl text-sm leading-7 text-[#C4B5FD]">Karyawan ajukan sendiri melalui akunnya, atasan setujui lewat notifikasi. Semua alur terdokumentasi otomatis di sistem.</p>
-              <div className="mt-6 grid gap-4 sm:grid-cols-3">
-                {[modules[2], modules[5], modules[6]].map(m => {
-                  const ModIcon = m.icon
-                  return (
-                    <div key={m.title} className="aurora-mini-card top-edge-highlight card-glow rounded-2xl p-5">
-                      <div className="grid h-10 w-10 place-items-center rounded-lg bg-gradient-to-br from-[#4C1D95] via-[#7C3AED] to-[#2D1B69] text-[#F5F3FF] shadow-[0_0_18px_rgba(167,139,250,0.22)]">
-                        <ModIcon size={18}/>
-                      </div>
-                      <p className="mt-4 text-sm font-bold text-[#FAF7FF]">{m.title}</p>
-                      <p className="mt-1.5 text-xs leading-5 text-[#B8A8DE]">{m.points.join(' Ã‚Â· ')}</p>
                     </div>
                   )
                 })}
@@ -172,7 +124,7 @@ export function WorkflowSection() {
                     <div key={module.title} className="rounded-2xl border border-[#E1E8F1] bg-white/75 p-4 shadow-sm">
                       <div className="grid h-9 w-9 place-items-center rounded-xl bg-[#EDF4FF] text-[#2367D1]"><Icon size={17} /></div>
                       <p className="mt-4 text-sm font-semibold text-[#12264F]">{module.title}</p>
-                      <p className="mt-1 text-xs leading-5 text-[#69758D]">{module.points.slice(0, 2).join(' Ã‚Â· ')}</p>
+                      <p className="mt-1 text-xs leading-5 text-[#69758D]">{module.points.slice(0, 2).join(' · ')}</p>
                     </div>
                   )
                 })}
@@ -198,7 +150,7 @@ export function WorkflowSection() {
                         <Icon size={17} className="text-[#6A4CC7]" />
                         <div className="min-w-0">
                           <p className="text-sm font-semibold text-[#12264F]">{module.title}</p>
-                          <p className="truncate text-xs text-[#69758D]">{module.points.slice(0, 2).join(' Ã‚Â· ')}</p>
+                          <p className="truncate text-xs text-[#69758D]">{module.points.slice(0, 2).join(' · ')}</p>
                         </div>
                         <CheckCircle2 size={17} className="ml-auto shrink-0 text-[#18A06E]" />
                       </div>

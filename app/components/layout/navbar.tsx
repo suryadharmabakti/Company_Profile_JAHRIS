@@ -53,15 +53,15 @@ export function Navbar() {
 
   return (
     <header className={`fixed inset-x-0 top-0 z-50 px-4 transition-[padding,transform,opacity] duration-500 ease-out ${scrolled ? 'pt-3' : 'pt-5'} ${hidden ? '-translate-y-[calc(100%+1rem)] opacity-0 pointer-events-none' : 'translate-y-0 opacity-100'}`}>
-      <div className={`mx-auto flex h-14 max-w-[1160px] items-center justify-between gap-2 rounded-full border border-white/65 bg-[rgba(255,255,255,0.52)] p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.78),0_12px_30px_rgba(11,31,79,0.12)] backdrop-blur-[20px] transition-all duration-300 ${scrolled ? 'shadow-[0_12px_40px_rgba(11,31,79,0.16)]' : ''}`}>
+      <div className={`mx-auto flex h-20 max-w-[1160px] items-center justify-between gap-4 rounded-full border border-white/65 bg-[rgba(255,255,255,0.52)] px-2 py-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.78),0_12px_30px_rgba(11,31,79,0.12)] backdrop-blur-[20px] transition-all duration-300 ${scrolled ? 'shadow-[0_12px_40px_rgba(11,31,79,0.16)]' : ''}`}>
         <a
           href="#home"
-          className="flex h-11 items-center border-r border-[#DCE4EE] px-4 sm:px-5"
+          className="flex h-11 shrink-0 items-center px-3 sm:px-4"
         >
           <Image src="/images/brand/logo.png" alt="JAHRIS" width={190} height={39} priority className="h-auto w-[112px] sm:w-[126px]" />
         </a>
 
-        <div className="flex h-full items-center gap-2">
+        <div className="flex h-full items-center gap-3">
           <nav className="hidden items-center gap-1 lg:flex" aria-label="Navigasi utama">
             {links.map(([name, href]) => (
               <a
@@ -83,7 +83,7 @@ export function Navbar() {
             href="https://app.jahris.id"
             target="_blank"
             rel="noreferrer"
-            className="hidden min-h-11 items-center rounded-full bg-gradient-to-r from-[#3B1A7E] to-[#7C3AED] px-6 text-xs font-bold text-white border border-[rgba(167,139,250,0.38)] shadow-md transition-all duration-300 hover:border-white/50 hover:-translate-y-0.5 sm:inline-flex"
+            className="hidden min-h-11 items-center rounded-full border border-[#12264F] bg-[#12264F] px-6 text-xs font-bold text-white shadow-[0_8px_18px_rgba(18,38,79,.22)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1C3970] sm:inline-flex"
           >
             Coba Sekarang ↗
           </a>
