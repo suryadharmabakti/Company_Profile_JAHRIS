@@ -7,6 +7,7 @@
    Bright aurora purple palette with gradient candy
    ============================================= */
 :root {
+  --font-apple: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", sans-serif;
   --surface: #FFFFFF;
   --surface-border: #E3E8F0;
   --surface-shadow: 0 8px 28px rgba(18,38,79,0.06);
@@ -385,10 +386,9 @@ body {
 
 @layer base {
   html { scroll-behavior: smooth; }
+  html.lenis { scroll-behavior: auto; }
   html.lenis, html.lenis body { height: auto; }
   .lenis.lenis-smooth { scroll-behavior: auto !important; }
-  .lenis.lenis-stopped { overflow: hidden; }
-  .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
   body {
     @apply bg-[#F3F8FF] text-[#0B1F4F] antialiased selection:bg-[#2563A9] selection:text-white;
     background-image:
@@ -397,7 +397,7 @@ body {
       radial-gradient(ellipse 75% 50% at 90% 70%, rgba(11,31,79,0.10), transparent 55%);
     background-attachment: fixed;
   }
-  h1, h2, h3 { font-family: var(--font-dm-sans), sans-serif; }
+  h1, h2, h3 { font-family: var(--font-apple); }
   :focus-visible { @apply outline outline-2 outline-offset-4 outline-fuchsia-400; }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -488,7 +488,7 @@ main :is(a, button):focus-visible {
    system typography while preserving the JAHRIS glass material. */
 html { background: #F5F5F7; }
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, Arial, sans-serif;
+  font-family: var(--font-apple);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -509,7 +509,7 @@ main > section {
 
 #contact,
 #contact :is(h1, h2, h3, h4, p, span, a) {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, Arial, sans-serif;
+  font-family: var(--font-apple);
 }
 
 @keyframes jahris-intro-logo {
@@ -578,9 +578,41 @@ main > section {
   border-radius: 25px;
 }
 
+@media (hover: hover) {
+  .card-glow:hover {
+    transform: translateY(-3px) !important;
+  }
+}
+
+main :is(a, button):active {
+  transform: translateY(1px);
+}
+
 .product-caption {
   color: #FFFFFF !important;
   -webkit-text-fill-color: #FFFFFF !important;
+}
+
+[data-scroll-float] {
+  will-change: transform;
+}
+
+@keyframes whatsapp-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.whatsapp-float {
+  animation: whatsapp-float 2.8s cubic-bezier(.22, 1, .36, 1) infinite;
+}
+
+.whatsapp-float:hover {
+  animation-play-state: paused;
+  transform: translateY(-3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-float { animation: none; }
 }
 
 @supports not (backdrop-filter: blur(1px)) {

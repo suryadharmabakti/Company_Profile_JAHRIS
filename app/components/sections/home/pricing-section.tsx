@@ -8,7 +8,7 @@ export function PricingSection() {
       <div className="pointer-events-none absolute left-1/4 top-20 h-[500px] w-[500px] animate-blob-drift-slow rounded-full blur-[140px]" style={{ background: 'radial-gradient(circle, rgba(244,114,182,0.22) 0%, transparent 60%)' }} />
       <div className="pointer-events-none absolute right-1/4 bottom-20 h-[500px] w-[500px] animate-blob-drift rounded-full blur-[140px]" style={{ background: 'radial-gradient(circle, rgba(96,165,250,0.18) 0%, rgba(217,70,239,0.14) 40%, transparent 60%)' }} />
       <Container className="relative z-10">
-        <Reveal>
+        <Reveal variant="fade-up">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="mt-5 font-display text-[clamp(2rem,4vw,3.2rem)] font-bold tracking-[-.04em]">
               <span className="text-[#FAF7FF]">Pilih ruang untuk </span>
@@ -21,10 +21,10 @@ export function PricingSection() {
         </Reveal>
 
         <div className="mt-12 grid items-stretch gap-6 lg:grid-cols-3">
-          {pricing.map(plan => (
-            <Reveal key={plan.name}>
+          {pricing.map((plan, index) => (
+            <Reveal key={plan.name} delay={index * 180} variant="stagger-cards">
               <article
-                className={`relative flex h-full flex-col rounded-[28px] p-7 transition-all duration-300 hover:-translate-y-2 backdrop-blur-xl ${
+                className={`relative flex h-full flex-col rounded-[28px] p-7 transition-all duration-300 hover:-translate-y-0.5 backdrop-blur-xl ${
                   plan.popular
                     ? 'pricing-featured dark-surface border border-[#1C3C70] bg-[#12264F] text-white shadow-[0_22px_48px_rgba(18,38,79,.24)]'
                     : 'aurora-card-dark top-edge-highlight card-glow text-white'
@@ -78,7 +78,7 @@ export function PricingSection() {
         </div>
 
         <p className="mt-8 text-center text-xs leading-6 text-[#B8A8DE]">
-          Harga &ldquo;mulai dari&rdquo; dan ketersediaan fitur mengikuti proposal JAHRIS 2026; konfirmasi penawaran akhir dengan tim sales. Paket Pro ditujukan mulai ≥50 karyawan, Enterprise mulai ≥300 karyawan.
+          Paket Pro ditujukan mulai ≥30 karyawan, Enterprise mulai ≥100 karyawan.
         </p>
       </Container>
     </section>

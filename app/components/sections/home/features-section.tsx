@@ -23,7 +23,7 @@ export function FeaturesSection() {
         style={{ background: 'radial-gradient(ellipse, rgba(96,165,250,0.16) 0%, rgba(124,58,237,0.18) 40%, transparent 65%)' }}
       />
       <Container className="relative z-10">
-        <Reveal>
+        <Reveal variant="fade-up">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="font-display text-[clamp(2rem,4vw,3.2rem)] font-semibold leading-[1.2] tracking-[-.04em]">
               <span>Semua kebutuhan HR,</span>
@@ -33,10 +33,10 @@ export function FeaturesSection() {
           </div>
         </Reveal>
 
-        <Reveal>
+        <Reveal variant="stagger-cards">
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {badges.map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="aurora-mini-card card-glow relative flex items-start gap-4 overflow-hidden rounded-2xl p-5 transition-all">
+              <div key={title} data-motion-card className="aurora-mini-card card-glow relative flex items-start gap-4 overflow-hidden rounded-2xl p-5 transition-all">
                 <div aria-hidden="true" className="feature-pattern" />
                 <div className="relative grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-[#E1E6ED] bg-white/80 text-[#12264F] shadow-sm">
                   <Icon size={17}/>
@@ -51,7 +51,7 @@ export function FeaturesSection() {
         </Reveal>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-7">
-          <Reveal className="lg:col-span-7">
+          <Reveal variant="soft-scale" className="lg:col-span-7">
             <article className="glass-card card-glow h-full rounded-[28px] p-6 sm:p-8">
               <div className="grid h-12 w-12 place-items-center rounded-2xl border border-[#E1E6ED] bg-white/80 text-[#12264F] shadow-sm">
                 <Users size={22}/>
@@ -62,7 +62,7 @@ export function FeaturesSection() {
                 {modules.slice(0, 2).map(m => {
                   const ModIcon = m.icon
                   return (
-                    <div key={m.title} className="rounded-2xl border border-[#E3E8F0] bg-white/70 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,.92)]">
+                    <div key={m.title} data-motion-card className="rounded-2xl border border-[#E3E8F0] bg-white/70 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,.92)]">
                       <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-[#E1E6ED] bg-white/80 text-[#12264F] shadow-sm">
                         <ModIcon size={18}/>
                       </div>
@@ -90,7 +90,7 @@ export function WorkflowSection() {
   return (
     <section id="benefits" className="scroll-mt-24 bg-[#F7FAFE] py-20 sm:py-28">
       <Container>
-        <Reveal>
+        <Reveal variant="fade-up">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="font-display text-[clamp(2rem,4vw,3.1rem)] font-semibold leading-[1.15] tracking-[-.04em] text-[#12264F]">
               Operasional HR, tanpa pekerjaan berulang.
@@ -102,11 +102,11 @@ export function WorkflowSection() {
         </Reveal>
 
         <div className="mt-12 grid gap-5 lg:grid-cols-12">
-          <Reveal className="lg:col-span-7">
+          <Reveal variant="slide-left" className="lg:col-span-7">
             <article className="glass-card h-full rounded-[28px] p-6 sm:p-8">
               <div className="flex flex-col justify-between gap-8 sm:flex-row sm:items-start">
                 <div className="max-w-md">
-                  <div className="grid h-12 w-12 place-items-center rounded-2xl border border-[#DCE5F2] bg-white text-[#2367D1] shadow-sm">
+                  <div className="grid h-12 w-12 place-items-center rounded-2xl border border-[#DCE5F2] bg-white text-[#1D1D1F] shadow-sm">
                     <CircleDollarSign size={22} />
                   </div>
                   <h3 className="mt-5 font-display text-2xl font-semibold tracking-[-.03em] text-[#12264F]">Payroll dan performa, selalu terkendali.</h3>
@@ -121,8 +121,8 @@ export function WorkflowSection() {
                 {payrollModules.map((module) => {
                   const Icon = module.icon
                   return (
-                    <div key={module.title} className="rounded-2xl border border-[#E1E8F1] bg-white/75 p-4 shadow-sm">
-                      <div className="grid h-9 w-9 place-items-center rounded-xl bg-[#EDF4FF] text-[#2367D1]"><Icon size={17} /></div>
+                    <div key={module.title} data-motion-card className="rounded-2xl border border-[#E1E8F1] bg-white/75 p-4 shadow-sm">
+                      <div className="grid h-9 w-9 place-items-center rounded-xl bg-[#EDF4FF] text-[#1D1D1F]"><Icon size={17} /></div>
                       <p className="mt-4 text-sm font-semibold text-[#12264F]">{module.title}</p>
                       <p className="mt-1 text-xs leading-5 text-[#69758D]">{module.points.slice(0, 2).join(' · ')}</p>
                     </div>
@@ -133,10 +133,10 @@ export function WorkflowSection() {
           </Reveal>
 
           <div className="grid gap-5 lg:col-span-5">
-            <Reveal>
+            <Reveal variant="slide-right">
               <article className="glass-card rounded-[28px] p-6">
                 <div className="flex items-start gap-4">
-                  <div className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[#DCE5F2] bg-white text-[#6A4CC7] shadow-sm"><Workflow size={20} /></div>
+                  <div className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[#DCE5F2] bg-white text-[#1D1D1F] shadow-sm"><Workflow size={20} /></div>
                   <div>
                     <h3 className="font-display text-lg font-semibold text-[#12264F]">Persetujuan tanpa kertas.</h3>
                     <p className="mt-2 text-sm leading-6 text-[#55627D]">Ajukan, tinjau, dan setujui dari satu alur yang jelas.</p>
@@ -146,8 +146,8 @@ export function WorkflowSection() {
                   {requestModules.map((module) => {
                     const Icon = module.icon
                     return (
-                      <div key={module.title} className="flex items-center gap-3 rounded-xl border border-[#E1E8F1] bg-white/75 p-3">
-                        <Icon size={17} className="text-[#6A4CC7]" />
+                      <div key={module.title} data-motion-card className="flex items-center gap-3 rounded-xl border border-[#E1E8F1] bg-white/75 p-3">
+                        <Icon size={17} className="text-[#1D1D1F]" />
                         <div className="min-w-0">
                           <p className="text-sm font-semibold text-[#12264F]">{module.title}</p>
                           <p className="truncate text-xs text-[#69758D]">{module.points.slice(0, 2).join(' · ')}</p>
@@ -159,7 +159,7 @@ export function WorkflowSection() {
                 </div>
               </article>
             </Reveal>
-            <Reveal>
+            <Reveal delay={140} variant="slide-right">
               <article className="dark-surface rounded-[28px] border border-[#173B73] bg-[#12264F] p-6 text-white shadow-[0_18px_45px_rgba(18,38,79,.18)]">
                 <div className="flex items-center justify-between">
                   <div className="grid h-10 w-10 place-items-center rounded-xl bg-white/10 text-[#C9DCFF]"><BarChart3 size={19} /></div>

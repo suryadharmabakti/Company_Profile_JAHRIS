@@ -19,6 +19,7 @@ export function Navbar() {
   const [hidden, setHidden] = useState(false)
   const [activeLink, setActiveLink] = useState('#home')
   const lastScrollY = useRef(0)
+  const scrollFrame = useRef<number | null>(null)
 
   useEffect(() => {
     const update = () => {
@@ -27,9 +28,19 @@ export function Navbar() {
       setHidden(currentScrollY > 120 && currentScrollY > lastScrollY.current)
       lastScrollY.current = currentScrollY
     }
+    const onScroll = () => {
+      if (scrollFrame.current !== null) return
+      scrollFrame.current = requestAnimationFrame(() => {
+        update()
+        scrollFrame.current = null
+      })
+    }
     lastScrollY.current = window.scrollY
-    window.addEventListener('scroll', update, { passive: true })
-    return () => window.removeEventListener('scroll', update)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      if (scrollFrame.current !== null) cancelAnimationFrame(scrollFrame.current)
+    }
   }, [])
 
   useEffect(() => {
@@ -132,7 +143,7 @@ export function Navbar() {
   )
 }
 
-export function Reveal({ children, className = '' }: { children: ReactNode; className?: string }) {
-  return <div data-motion-reveal className={className}>{children}</div>
+export function Reveal({ children, className = '', delay = 0, variant = 'fade-up' }: { children: ReactNode; className?: string; delay?: number; variant?: 'fade-up' | 'fade-in' | 'slide-left' | 'slide-right' | 'soft-scale' | 'stagger-cards' }) {
+  return <div data-motion-reveal data-motion-delay={delay || undefined} data-motion-variant={variant} className={className}>{children}</div>
 }
 

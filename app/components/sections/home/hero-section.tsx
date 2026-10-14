@@ -3,6 +3,18 @@ import { ArrowUpRight, CheckCircle2, ShieldCheck, Smartphone } from 'lucide-reac
 import { Reveal } from '../../layout/navbar'
 import { Container } from '../../shared/ui'
 
+function AnimatedHeroLine({ text, className }: { text: string; className: string }) {
+  return (
+    <span data-hero-line aria-label={text} className={className}>
+      {Array.from(text).map((character, index) => (
+        <span key={`${character}-${index}`} data-hero-char aria-hidden="true" className="inline-block">
+          {character === ' ' ? '\u00A0' : character}
+        </span>
+      ))}
+    </span>
+  )
+}
+
 export function HeroSection() {
   return (
     <section id="home" className="relative min-h-[100svh] overflow-hidden bg-[#F7FAFE] text-[#0B1F4F]">
@@ -29,12 +41,10 @@ export function HeroSection() {
         <Reveal className="w-full">
 
           <h1 className="mx-auto mt-6 max-w-4xl font-display text-[clamp(3rem,6.2vw,5.8rem)] font-semibold leading-[1.04] tracking-[-.055em]">
-            <span className="block overflow-hidden"><span data-hero-line className="block text-[#0B1F4F]">Kelola tim.</span></span>
-            <span className="block overflow-hidden"><span data-hero-line className="block text-[#0B1F4F]">Bekerja lebih</span></span>
+            <span className="block overflow-hidden"><AnimatedHeroLine text="Kelola tim." className="block text-[#0B1F4F]" /></span>
+            <span className="block overflow-hidden"><AnimatedHeroLine text="Bekerja lebih" className="block text-[#0B1F4F]" /></span>
             <span className="block overflow-hidden">
-              <span data-hero-line className="block text-gradient-navy-blue">
-                terarah.
-              </span>
+              <AnimatedHeroLine text="terarah." className="block text-gradient-navy-blue" />
             </span>
           </h1>
 
@@ -60,9 +70,9 @@ export function HeroSection() {
           </div>
 
           <div data-hero-stack className="mx-auto mt-10 flex max-w-2xl flex-wrap items-center justify-center gap-x-7 gap-y-3 border-t border-[#DCE4EE] pt-5 text-sm text-[#55627D]">
-            <span className="flex items-center gap-2 transition-colors hover:text-[#DDD6FE]"><CheckCircle2 size={17} className="text-[#A78BFA]"/> Implementasi ±14 hari</span>
-            <span className="flex items-center gap-2 transition-colors hover:text-[#DDD6FE]"><Smartphone size={17} className="text-[#A78BFA]"/> Laptop & smartphone</span>
-            <span className="flex items-center gap-2 transition-colors hover:text-[#DDD6FE]"><ShieldCheck size={17} className="text-[#A78BFA]"/> Berbasis web</span>
+            <span className="flex items-center gap-2 transition-colors hover:text-[#DDD6FE]"><CheckCircle2 size={17} className="text-[#12264F]"/> Implementasi ±14 hari</span>
+            <span className="flex items-center gap-2 transition-colors hover:text-[#DDD6FE]"><Smartphone size={17} className="text-[#12264F]"/> Laptop & smartphone</span>
+            <span className="flex items-center gap-2 transition-colors hover:text-[#DDD6FE]"><ShieldCheck size={17} className="text-[#12264F]"/> Berbasis web</span>
           </div>
         </Reveal>
 
@@ -74,6 +84,8 @@ export function HeroSection() {
             height={1024}
             priority
             sizes="(max-width: 1024px) 94vw, 1080px"
+            data-scroll-float
+            data-scroll-depth="0.45"
             className="h-auto w-full object-contain mix-blend-multiply"
           />
         </div>

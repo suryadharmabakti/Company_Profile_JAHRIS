@@ -19,9 +19,15 @@ export function IntroLoader() {
       introScheduled.current = true
     }
 
+    document.documentElement.dataset.jahrisIntro = 'active'
+
     const begin = window.setTimeout(() => setStage('visible'), 0)
     const leave = window.setTimeout(() => setStage('leaving'), 3400)
-    const finish = window.setTimeout(() => setStage('idle'), 4000)
+    const finish = window.setTimeout(() => {
+      setStage('idle')
+      delete document.documentElement.dataset.jahrisIntro
+      window.dispatchEvent(new Event('jahris:intro-complete'))
+    }, 4000)
     return () => {
       window.clearTimeout(begin)
       window.clearTimeout(leave)

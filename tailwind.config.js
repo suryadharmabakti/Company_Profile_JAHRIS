@@ -3,8 +3,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        display: ['var(--font-dm-sans)', 'sans-serif'],
-        sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Text"', 'Inter', 'Arial', 'sans-serif'],
+        display: ['var(--font-apple)'],
+        sans: ['var(--font-apple)'],
       },
       colors: {
         ink: '#15092e',
