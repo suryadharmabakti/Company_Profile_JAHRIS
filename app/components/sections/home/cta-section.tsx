@@ -21,7 +21,7 @@ export function CtaSection() {
           </p>
           <div data-motion-actions className="mt-8 flex flex-wrap gap-4">
             <a
-              href="mailto:hrmanagementjaxer@gmail.com?subject=Konsultasi%20JAHRIS"
+              href="mailto:support@jahris.id?subject=Konsultasi%20JAHRIS"
               className="inline-flex h-12 items-center gap-2 rounded-full border border-[rgba(244,114,182,0.38)] bg-gradient-to-br from-[rgba(217,70,239,0.18)] to-[rgba(96,165,250,0.12)] px-7 text-sm font-bold text-white backdrop-blur-md transition hover:-translate-y-0.5 hover:border-[rgba(244,114,182,0.60)] hover:shadow-[0_10px_34px_rgba(217,70,239,0.28)]"
             >
               Jadwalkan konsultasi <ArrowUpRight size={16}/>

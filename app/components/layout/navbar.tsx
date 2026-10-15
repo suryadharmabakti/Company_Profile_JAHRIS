@@ -64,7 +64,7 @@ export function Navbar() {
 
   return (
     <header className={`fixed inset-x-0 top-0 z-50 px-4 transition-[padding,transform,opacity] duration-500 ease-out ${scrolled ? 'pt-3' : 'pt-5'} ${hidden ? '-translate-y-[calc(100%+1rem)] opacity-0 pointer-events-none' : 'translate-y-0 opacity-100'}`}>
-      <div className={`mx-auto flex h-20 max-w-[1160px] items-center justify-between gap-4 rounded-full border border-white/65 bg-[rgba(255,255,255,0.52)] px-2 py-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.78),0_12px_30px_rgba(11,31,79,0.12)] backdrop-blur-[20px] transition-all duration-300 ${scrolled ? 'shadow-[0_12px_40px_rgba(11,31,79,0.16)]' : ''}`}>
+      <div className={`mx-auto flex h-16 max-w-[1160px] items-center justify-between gap-4 rounded-full border border-white/65 bg-[rgba(255,255,255,0.52)] px-2 py-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.78),0_12px_30px_rgba(11,31,79,0.12)] backdrop-blur-[20px] transition-all duration-300 ${scrolled ? 'shadow-[0_12px_40px_rgba(11,31,79,0.16)]' : ''}`}>
         <a
           href="#home"
           className="flex h-11 shrink-0 items-center px-3 sm:px-4"
@@ -81,7 +81,7 @@ export function Navbar() {
                 aria-current={activeLink === href ? 'page' : undefined}
                 className={`rounded-full px-4 py-2.5 text-xs font-bold transition-all duration-300 ${
                   activeLink === href
-                    ? 'bg-white/85 text-[#12264F] shadow-sm'
+                    ? 'bg-[#12264f] text-white shadow-sm'
                     : 'text-[#314E7A] hover:bg-white/50 hover:text-[#0B1F4F]'
                 }`}
               >
@@ -111,7 +111,7 @@ export function Navbar() {
       </div>
 
       <nav
-        className={`mx-auto mt-2 max-w-[1360px] overflow-hidden rounded-2xl border border-[rgba(167,139,250,0.18)] bg-[#0E0720]/95 shadow-2xl backdrop-blur-2xl transition-all duration-300 ease-out lg:hidden ${
+        className={`mx-auto mt-2 max-w-[1160px] overflow-hidden rounded-2xl border border-[rgba(167,139,250,0.18)] bg-[#0E0720]/95 shadow-2xl backdrop-blur-2xl transition-all duration-300 ease-out lg:hidden ${
           open ? 'max-h-[450px] translate-y-0 p-4 opacity-100' : 'pointer-events-none max-h-0 -translate-y-2 p-0 opacity-0'
         }`}
         aria-label="Navigasi mobile"
@@ -124,7 +124,7 @@ export function Navbar() {
               href={href}
               onClick={() => { setActiveLink(href); setOpen(false) }}
               tabIndex={open ? 0 : -1}
-              className="rounded-xl px-4 py-3 text-sm font-semibold text-white/90 hover:bg-white/10 hover:text-white"
+              className="rounded-lg px-4 py-3 text-sm font-semibold text-white/90 hover:bg-white/10 hover:text-white"
             >
               {name}
             </a>
@@ -133,7 +133,7 @@ export function Navbar() {
             href="https://app.jahris.id"
             target="_blank"
             rel="noreferrer"
-            className="rounded-xl bg-gradient-to-r from-[#F5F0FF] to-[#DDD0FF] px-4 py-3 text-center text-sm font-bold text-[#1E0F45] shadow-md"
+            className="rounded-lg px-4 py-3 bg-white text-center text-sm font-bold text-[#1E0F45] shadow-md"
           >
             Coba Sekarang ↗
           </a>

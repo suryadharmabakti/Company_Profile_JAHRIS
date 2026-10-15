@@ -65,7 +65,7 @@ export function Footer() {
           <div>
             <h3 className={headingClass}>Hubungi kami</h3>
             <div className="mt-2 grid gap-1">
-              <a href="mailto:hrmanagementjaxer@gmail.com" className={`${linkClass} break-all`}>hrmanagementjaxer@gmail.com</a>
+              <a href="mailto:support@jahris.id" className={`${linkClass} break-all`}>support@jahris.id</a>
               <p className={linkClass}>Cempaka Putih, Jakarta Pusat</p>
             </div>
           </div>
@@ -75,7 +75,7 @@ export function Footer() {
             <div className="mt-2 grid gap-1">
               <a href="https://instagram.com/jahris.id" target="_blank" rel="noreferrer" className={linkClass}>Instagram</a>
               <a href="https://wa.me/6281511496687" target="_blank" rel="noreferrer" className={linkClass}>WhatsApp</a>
-              <a href="mailto:hrmanagementjaxer@gmail.com" className={linkClass}>Email</a>
+              <a href="mailto:support@jahris.id" className={linkClass}>Email</a>
             </div>
           </div>
         </div>

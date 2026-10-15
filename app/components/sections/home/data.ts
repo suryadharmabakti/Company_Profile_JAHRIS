@@ -11,8 +11,8 @@ export const modules = [
 ]
 
 export const pricing = [
-  { name: 'Basic', audience: 'Untuk perusahaan kecil hingga menengah', old: 'Rp 9.990', price: 'Rp 7.499', unit: '/karyawan/bulan', features: ['Dashboard HR', 'Absensi & kehadiran', 'Pengajuan cuti / izin', 'Basic reporting', 'Face recognition (AI check-in/out)'], cta: 'Pilih Basic', href: 'mailto:hrmanagementjaxer@gmail.com?subject=Konsultasi%20JAHRIS%20Basic' },
-  { name: 'Pro', audience: 'Untuk tim yang sedang bertumbuh', old: 'Rp 12.990', price: 'Rp 9.990', unit: '/karyawan/bulan', features: ['Semua fitur Basic', 'Pengelolaan keuangan', 'Manajemen tugas', 'Penilaian kinerja (KPI)'], cta: 'Pilih Pro', href: 'mailto:hrmanagementjaxer@gmail.com?subject=Konsultasi%20JAHRIS%20Pro', popular: true },
+  { name: 'Basic', audience: 'Untuk perusahaan kecil hingga menengah', old: 'Rp 9.990', price: 'Rp 7.499', unit: '/karyawan/bulan', features: ['Dashboard HR', 'Absensi & kehadiran', 'Pengajuan cuti / izin', 'Basic reporting', 'Face recognition (AI check-in/out)'], cta: 'Pilih Basic', href: 'mailto:support@jahris.id?subject=Konsultasi%20JAHRIS%20Basic' },
+  { name: 'Pro', audience: 'Untuk tim yang sedang bertumbuh', old: 'Rp 12.990', price: 'Rp 9.990', unit: '/karyawan/bulan', features: ['Semua fitur Basic', 'Pengelolaan keuangan', 'Manajemen tugas', 'Penilaian kinerja (KPI)'], cta: 'Pilih Pro', href: 'mailto:support@jahris.id?subject=Konsultasi%20JAHRIS%20Pro', popular: true },
   { name: 'Enterprise', audience: 'Untuk korporasi dan multi-cabang', price: 'Custom', unit: 'sesuai kebutuhan', features: ['Semua fitur lengkap', 'Integrasi khusus HRIS / payroll', 'Dedicated support / SLA'], cta: 'Hubungi Sales', href: 'https://wa.me/6281511496687?text=Halo%20JAHRIS%2C%20saya%20ingin%20konsultasi%20paket%20Enterprise.' },
 ]
 
